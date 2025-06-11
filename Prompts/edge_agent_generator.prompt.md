@@ -44,6 +44,10 @@ All generated agents must incorporate these core principles:
   - Build configuration with `autogn` (x64 debug/release)
   - Building with `autoninja` (chrome, mini_installer targets)
   - Code formatting with `git ms format`
+- **Search Requirements**: **MANDATORY** use of preferred search methods for all code discovery
+  - **PREFERRED**: Use Haystack (`bb7_HaystackSearch`, `bb7_HaystackFiles`) or `semantic_search`
+  - **NEVER** use other VS Code default search capabilities (grep_search, file_search)
+  - Apply preferred search methods in ALL tasks, steps, and scenarios including validation
 
 #### Change Validation Steps
 - **Incremental Changes**: Make small, reviewable changes
@@ -63,10 +67,10 @@ before moving on to the next step.
 [ ] 0. Before you start
 [ ] 1. Review user input and validate requirements
 [ ] 2. Verify branch safety (current branch must not be main)
-[ ] 3. [Domain-specific discovery/analysis steps]
-[ ] 4. [Domain-specific implementation steps]
-[ ] 5. Build and validate changes
-[ ] 6. Test and verify functionality
+[ ] 3. [Domain-specific discovery/analysis steps using preferred search methods]
+[ ] 4. [Domain-specific implementation steps using preferred search methods]
+[ ] 5. Build and validate changes (using preferred search methods for validation)
+[ ] 6. Test and verify functionality (using preferred search methods for verification)
 [ ] 7. Prepare for code review
 ```
 
@@ -109,6 +113,27 @@ When running multiple git commands, use semicolon (`;`) separator instead of `&&
 - ✅ Correct: `git add .; git commit -m "message"; git push`
 - ❌ Incorrect: `git add . && git commit -m "message" && git push`
 
+### Preferred Search Requirements
+**CRITICAL**: All generated agents MUST use preferred search methods for ALL search operations:
+
+#### Preferred Search Methods
+- **Text Search**: Use `bb7_HaystackSearch` for text/code content searches
+- **File Search**: Use `bb7_HaystackFiles` for filename/path searches  
+- **Semantic Search**: Use `semantic_search` for contextual code discovery
+- **ALL Scenarios**: Apply preferred search methods in every task, step, and validation scenario
+- **NO Other Methods**: Prohibited methods listed below are strictly forbidden
+
+#### Prohibited Search Methods
+- ❌ **NEVER** use `grep_search`
+- ❌ **NEVER** use `file_search`
+- ❌ **NEVER** use other VS Code default search capabilities
+- ❌ **NEVER** use any other search method except preferred ones
+
+#### Search Method Usage
+- ✅ **Preferred**: `bb7_HaystackSearch(query="function_name", workspace="${Edge_Repo}/src")`
+- ✅ **Preferred**: `bb7_HaystackFiles(query="filename", workspace="${Edge_Repo}/src")`
+- ✅ **Preferred**: `semantic_search(query="search terms")`
+
 ### Required Variables
 You are responsible for determining the following variables:
 - `${Edge_Repo}`: The Edge repository root folder (e.g., `E:\Edge`)
@@ -132,10 +157,12 @@ If satisfactory input is not provided, guide the user with:
 Generated agents should customize these areas based on their specific domain:
 
 #### Code Discovery and Analysis
-- Component-specific file patterns and locations
-- Relevant build targets and dependencies
-- Testing strategies (unit tests, browser tests, integration tests)
-- Platform-specific considerations
+- Component-specific file patterns and locations (using preferred search methods)
+- Relevant build targets and dependencies (using preferred search methods)
+- Testing strategies (unit tests, browser tests, integration tests) (using preferred search methods)
+- Platform-specific considerations (using preferred search methods)
+- **PREFERRED**: All code discovery should use `bb7_HaystackSearch`, `bb7_HaystackFiles`, or `semantic_search`
+- **PROHIBITED**: Using `grep_search`, `file_search`, or other VS Code default search methods
 
 #### Implementation Patterns
 - Common code patterns for the domain
@@ -148,9 +175,11 @@ Generated agents should customize these areas based on their specific domain:
 - Build configuration management (debug_x64, release_x64)
 - Environment setup and dependency management
 - Domain-specific build targets (chrome, mini_installer)
-- Relevant test suites to run
+- Relevant test suites to run (discovered using preferred search methods)
 - Code quality checks and formatting (git ms format)
-- Integration validation steps
+- Integration validation steps (using preferred search methods for validation)
+- **PREFERRED**: All validation searches should use `bb7_HaystackSearch`, `bb7_HaystackFiles`, or `semantic_search`
+- **PROHIBITED**: Using `grep_search`, `file_search`, or other VS Code default search for validation tasks
 
 ### 5. Error Handling and Recovery
 
@@ -159,6 +188,48 @@ All agents must include:
 - **Attempt Limits**: Stop after 3 failed attempts and ask for help
 - **Context Preservation**: Maintain state across error recovery cycles
 - **User Communication**: Clear status updates and next steps
+
+### 6. Mandatory Haystack Search Integration
+
+All generated agents must include this exact section:
+
+```markdown
+## Search Requirements - CRITICAL COMPLIANCE
+
+### Preferred Search Methods Policy
+This agent uses **PREFERRED** search methods for ALL search operations. 
+Other VS Code default search capabilities are **STRICTLY PROHIBITED**.
+
+#### Preferred Search Tools
+- **Text/Code Search**: Use `bb7_HaystackSearch` with workspace parameter
+- **File Search**: Use `bb7_HaystackFiles` with workspace parameter
+- **Semantic Search**: Use `semantic_search` for contextual discovery
+- **Workspace Parameter**: Always include `workspace="${Edge_Repo}/src"` for Haystack calls
+
+#### Prohibited Search Tools
+- ❌ `grep_search` - NEVER USE  
+- ❌ `file_search` - NEVER USE
+- ❌ Other VS Code default search - NEVER USE
+- ❌ Any other search method - NEVER USE
+
+#### Search Usage Examples
+```
+# Preferred: Search for code/text content
+bb7_HaystackSearch(query="function implementation", workspace="${Edge_Repo}/src")
+
+# Preferred: Search for files
+bb7_HaystackFiles(query="test_file.cc", workspace="${Edge_Repo}/src")
+
+# Preferred: Semantic search
+semantic_search(query="function implementation details")
+```
+
+#### Compliance Verification
+Before ANY search operation, verify:
+1. Using `bb7_HaystackSearch`, `bb7_HaystackFiles`, OR `semantic_search`
+2. If using Haystack, including `workspace="${Edge_Repo}/src"` parameter
+3. NOT using any prohibited search methods
+```
 
 ## User Interaction Protocol
 
@@ -176,6 +247,9 @@ Before finalizing any generated agent, verify:
 - [ ] Branch safety check included (must not work on main branch)
 - [ ] Edge build system knowledge incorporated (edgebuild.md)
 - [ ] Git command syntax uses semicolon (`;`) separators
+- [ ] **Preferred search methods enforced for ALL search operations (Haystack and semantic_search)**
+- [ ] **VS Code default search methods explicitly prohibited (except preferred ones)**
+- [ ] **Preferred search methods required in ALL tasks, steps, and scenarios**
 - [ ] Build validation steps present
 - [ ] Test execution requirements defined
 - [ ] Error handling and recovery logic included
