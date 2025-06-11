@@ -27,17 +27,23 @@ description: "[Brief description of agent's purpose]"
 All generated agents must incorporate these core principles:
 
 #### Pre-execution Safety Checks
-- **Branch Safety**: Always work on feature branches, never directly on main
+- **Branch Safety**: Work on current branch but verify it's not main branch
 - **Build Validation**: Ensure builds succeed before making changes
 - **Test Coverage**: Run relevant tests to validate changes
 - **Code Review Readiness**: Prepare changes for proper code review
 
-#### Chromium Codebase Awareness
+#### Chromium/Edge Codebase Awareness
 - **Dependency Management**: Understand DEPS files and build dependencies
 - **Component Boundaries**: Respect component isolation and API boundaries
 - **Platform Considerations**: Account for Windows, macOS, Linux, mobile platforms
 - **Performance Impact**: Consider memory, startup, and runtime performance
 - **Security Implications**: Follow Chromium security best practices
+- **Edge Build System**: Understand Edge-specific build process and commands
+  - Environment setup with `initEdgeEnv.cmd`
+  - Dependency sync with `gclient sync`
+  - Build configuration with `autogn` (x64 debug/release)
+  - Building with `autoninja` (chrome, mini_installer targets)
+  - Code formatting with `git ms format`
 
 #### Change Validation Steps
 - **Incremental Changes**: Make small, reviewable changes
@@ -56,8 +62,8 @@ before moving on to the next step.
 
 [ ] 0. Before you start
 [ ] 1. Review user input and validate requirements
-[ ] 2. [Domain-specific discovery/analysis steps]
-[ ] 3. Create safety plan and branch strategy
+[ ] 2. Verify branch safety (current branch must not be main)
+[ ] 3. [Domain-specific discovery/analysis steps]
 [ ] 4. [Domain-specific implementation steps]
 [ ] 5. Build and validate changes
 [ ] 6. Test and verify functionality
@@ -71,6 +77,7 @@ before moving on to the next step.
 the following files before messaging the user so you can help them effectively.
 You do not need to search for these files, they can all be opened using the
 relative paths from this current file:
+- [edgebuild.md](../resources/edgebuild.md): Edge build system and commands
 - [autoninja.md](../resources/autoninja.md): Build system guidelines
 - [gtest.md](../resources/gtest.md): Testing framework usage
 - [haystack_readme.md](../resources/haystack_readme.md): Code search capabilities
@@ -83,9 +90,29 @@ relative paths from this current file:
 Review the following information before messaging the user so you can help them
 effectively.
 
+### Branch Safety Check
+You are **NOT** responsible for creating or managing branches. All work will be 
+performed on the current branch. However, you **MUST**:
+
+1. **Check Current Branch**: Verify the current branch is not `main`
+   - If on `main` branch, **STOP** and inform the user they must create or switch to a feature branch
+   - Suggest branch creation: `git checkout -b feature/new-branch-name`
+   - Or suggest switching: `git checkout existing-branch-name`
+
+2. **User Branch Options**: If not on the correct branch, inform the user they can:
+   - Create a new branch: `git checkout -b <new-branch-name> <base-branch>`
+   - Switch to existing branch: `git checkout <existing-branch-name>`
+   - The agent can help create/switch branches if user provides branch names
+
+### Git Command Execution
+When running multiple git commands, use semicolon (`;`) separator instead of `&&`:
+- ✅ Correct: `git add .; git commit -m "message"; git push`
+- ❌ Incorrect: `git add . && git commit -m "message" && git push`
+
 ### Required Variables
 You are responsible for determining the following variables:
-- `${out_dir}`: The build directory (e.g., `out/debug_x64`)
+- `${Edge_Repo}`: The Edge repository root folder (e.g., `E:\Edge`)
+- `${out_dir}`: The build directory (e.g., `out/debug_x64`, `out/release_x64`)
 - [Domain-specific variables]
 
 ### Input Parsing
@@ -117,9 +144,12 @@ Generated agents should customize these areas based on their specific domain:
 - Performance and security considerations
 
 #### Validation and Testing
-- Domain-specific build commands
+- Edge-specific build commands (autogn, autoninja, gclient sync)
+- Build configuration management (debug_x64, release_x64)
+- Environment setup and dependency management
+- Domain-specific build targets (chrome, mini_installer)
 - Relevant test suites to run
-- Code quality checks
+- Code quality checks and formatting (git ms format)
 - Integration validation steps
 
 ### 5. Error Handling and Recovery
@@ -143,7 +173,9 @@ When generating an agent:
 ## Safety Validation Checklist
 
 Before finalizing any generated agent, verify:
-- [ ] Branch safety measures included
+- [ ] Branch safety check included (must not work on main branch)
+- [ ] Edge build system knowledge incorporated (edgebuild.md)
+- [ ] Git command syntax uses semicolon (`;`) separators
 - [ ] Build validation steps present
 - [ ] Test execution requirements defined
 - [ ] Error handling and recovery logic included
