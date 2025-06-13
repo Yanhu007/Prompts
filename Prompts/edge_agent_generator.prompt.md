@@ -72,9 +72,10 @@ before moving on to the next step.
 [ ] 2. Verify branch safety (current branch must not be main)
 [ ] 3. [Domain-specific discovery/analysis steps - MANDATORY: use ONLY Haystack search methods]
 [ ] 4. [Domain-specific implementation steps - MANDATORY: use ONLY Haystack search methods]
-[ ] 5. Build environment validation and code compilation - MANDATORY: use ONLY commands from edgebuild.md
-[ ] 6. Test and verify functionality - MANDATORY: use ONLY Haystack search methods for verification
-[ ] 7. Prepare for code review
+[ ] 5. Confirm build type with user (debug or release) - MANDATORY before every build
+[ ] 6. Build environment validation and code compilation - MANDATORY: use ONLY commands from edgebuild.md
+[ ] 7. Test and verify functionality - MANDATORY: use ONLY Haystack search methods for verification
+[ ] 8. Prepare for code review
 ```
 
 #### Pre-execution Requirements
@@ -176,6 +177,7 @@ When running multiple git commands, use semicolon (`;`) separator instead of `&&
 You are responsible for determining the following variables:
 - `${Edge_Repo}`: The Edge repository root folder (e.g., `E:\Edge`)
 - `${out_dir}`: The build directory (e.g., `out/debug_x64`, `out/release_x64`)
+- `${build_type}`: The build type chosen by user (either "debug" or "release")
 - [Domain-specific variables]
 
 ### Input Parsing
@@ -233,27 +235,36 @@ All generated agents must include this exact section for build validation:
 After EVERY code modification, this agent MUST perform build environment validation and code compilation using **ONLY** commands from edgebuild.md. 
 Custom command combinations and creative interpretations are **ABSOLUTELY PROHIBITED**.
 
+#### MANDATORY User Build Type Confirmation (REQUIRED BEFORE EVERY BUILD)
+**STEP 1: Confirm Build Type with User**
+Before proceeding with any build operation, you MUST ask the user to confirm the build type:
+```
+"I need to build the code after the modifications. Which build type would you like me to use?"
+Options:
+- debug (for development and debugging)
+- release (for performance testing)
+
+Please specify: debug or release
+```
+Store the user's choice as `${build_type}` variable (either "debug" or "release").
+
 #### MANDATORY Build Environment Checks (REQUIRED BEFORE EVERY BUILD)
-**STEP 1: Build Environment Initialization Check**
+**STEP 2: Build Environment Initialization Check**
 ```powershell
 # Test if build environment is initialized
 git ms format --upstream=origin/main
 ```
 - **If command fails with "git: 'ms' is not a git command"**: Build environment NOT initialized
 - **Required Action**: Execute `${Edge_Repo}\depot_tools\scripts\setup\initEdgeEnv.cmd ${Edge_Repo}`
-- **If command succeeds**: Build environment is initialized, proceed to Step 2
+- **If command succeeds**: Build environment is initialized, proceed to Step 3
 
-**STEP 2: Output Directory Validation Check**
+**STEP 3: Output Directory Validation Check Based on Build Type**
 ```powershell
-# Test if output directories exist
-cd ${Edge_Repo}/src/out/debug_x64
+# Test if output directory exists for chosen build type
+cd ${Edge_Repo}/src/out/${build_type}_x64
 ```
-OR
-```powershell
-cd ${Edge_Repo}/src/out/release_x64
-```
-- **If command fails with "Cannot find path because it does not exist"**: Output folder NOT created
-- **Required Action**: Execute `autogn x64 debug` or `autogn x64 release` to create output folder
+- **If command fails with "cd : Cannot find path '${Edge_Repo}\src\out\${build_type}_x64' because it does not exist"**: Output folder NOT created
+- **Required Action**: Execute `autogn x64 ${build_type}` to create output folder
 - **If command succeeds**: Output directory exists, proceed to build
 
 #### MANDATORY Build Commands (ONLY THESE ALLOWED FROM EDGEBUILD.MD)
@@ -272,20 +283,17 @@ cd ${Edge_Repo}/src/out/release_x64
 
 3. **Generate Build Configuration** (WHEN OUTPUT DIRECTORY MISSING)
    ```powershell
-   # For debug build
-   autogn x64 debug
-   
-   # For release build  
-   autogn x64 release
+   # Create output folder for chosen build type
+   autogn x64 ${build_type}
    ```
 
 4. **Build Code** (MANDATORY AFTER CODE CHANGES)
    ```powershell
-   # Build debug version
-   autoninja -C out\debug_x64 chrome
+   # Build chrome for chosen build type
+   autoninja -C out\${build_type}_x64 chrome
    
-   # Build release version
-   autoninja -C out\release_x64 chrome
+   # OR Build mini_installer for chosen build type
+   autoninja -C out\${build_type}_x64 mini_installer
    ```
 
 5. **Format Code** (MANDATORY BEFORE COMMIT)
@@ -303,16 +311,17 @@ cd ${Edge_Repo}/src/out/release_x64
 #### REQUIRED Build Sequence After Code Changes
 ```powershell
 # MANDATORY: Always follow this exact sequence after code modifications
-cd ${Edge_Repo}/src; gclient sync; autoninja -C out\debug_x64 chrome; git ms format --upstream=origin/main
+cd ${Edge_Repo}/src; gclient sync; autoninja -C out\${build_type}_x64 chrome; git ms format --upstream=origin/main
 ```
 
 #### UNIVERSAL Build Compliance Verification - AFTER EVERY CODE CHANGE
 After ANY code modification, you MUST:
-1. Execute MANDATORY environment validation checks (Steps 1 & 2)
-2. Use ONLY commands from edgebuild.md in prescribed sequence
-3. NOT create custom command combinations under ANY circumstances
-4. NOT skip environment validation steps under ANY circumstances
-5. This applies to ALL tasks, ALL code changes, ALL scenarios without exception
+1. Ask user to confirm build type (debug or release) and store as ${build_type}
+2. Execute MANDATORY environment validation checks (Steps 2 & 3)
+3. Use ONLY commands from edgebuild.md in prescribed sequence with chosen build type
+4. NOT create custom command combinations under ANY circumstances
+5. NOT skip environment validation steps under ANY circumstances
+6. This applies to ALL tasks, ALL code changes, ALL scenarios without exception
 
 #### ENFORCEMENT ACROSS ALL OPERATIONS
 - **After Implementation**: MANDATORY build environment validation and compilation
