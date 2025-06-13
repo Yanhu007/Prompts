@@ -53,7 +53,8 @@ All generated agents must incorporate these core principles:
 
 #### Change Validation Steps
 - **Incremental Changes**: Make small, reviewable changes
-- **Build Verification**: Compile and link successfully
+- **Build Verification**: Compile and link successfully using ONLY commands from edgebuild.md
+- **Environment Validation**: Mandatory environment checks before every build
 - **Test Execution**: Run unit tests, browser tests as appropriate
 - **Code Quality**: Follow style guidelines and best practices
 - **Rollback Plan**: Always have a clear rollback strategy
@@ -71,7 +72,7 @@ before moving on to the next step.
 [ ] 2. Verify branch safety (current branch must not be main)
 [ ] 3. [Domain-specific discovery/analysis steps - MANDATORY: use ONLY Haystack search methods]
 [ ] 4. [Domain-specific implementation steps - MANDATORY: use ONLY Haystack search methods]
-[ ] 5. Build and validate changes - MANDATORY: use ONLY Haystack search methods for validation
+[ ] 5. Build environment validation and code compilation - MANDATORY: use ONLY commands from edgebuild.md
 [ ] 6. Test and verify functionality - MANDATORY: use ONLY Haystack search methods for verification
 [ ] 7. Prepare for code review
 ```
@@ -212,13 +213,115 @@ Generated agents should customize these areas based on their specific domain:
 - Build configuration management (debug_x64, release_x64)
 - Environment setup and dependency management
 - Domain-specific build targets (chrome, mini_installer)
+- **MANDATORY Build Environment Validation**: Every code change must be followed by build environment validation and build process
+- **Strict Build Command Compliance**: ONLY use commands from edgebuild.md, NO custom command combinations allowed
+- **Build Environment Checks**: Mandatory pre-build environment validation steps
 - Relevant test suites to run (MANDATORY: discovered using ONLY Haystack search methods)
 - Code quality checks and formatting (git ms format)
 - Integration validation steps (MANDATORY: use ONLY Haystack search methods for ALL validation)
 - **ABSOLUTE REQUIREMENT**: All validation searches MUST use ONLY `bb7_HaystackSearch`, `bb7_HaystackFiles`, or `semantic_search`
 - **ZERO TOLERANCE**: Using `grep_search`, `file_search`, or ANY other VS Code default search for validation tasks is STRICTLY FORBIDDEN
 
-### 5. Error Handling and Recovery
+### 5. Mandatory Build Process Requirements
+
+All generated agents must include this exact section for build validation:
+
+```markdown
+## Build Environment Validation and Code Compilation - CRITICAL MANDATORY COMPLIANCE
+
+### Build Process Policy - UNIVERSAL ENFORCEMENT
+After EVERY code modification, this agent MUST perform build environment validation and code compilation using **ONLY** commands from edgebuild.md. 
+Custom command combinations and creative interpretations are **ABSOLUTELY PROHIBITED**.
+
+#### MANDATORY Build Environment Checks (REQUIRED BEFORE EVERY BUILD)
+**STEP 1: Build Environment Initialization Check**
+```powershell
+# Test if build environment is initialized
+git ms format --upstream=origin/main
+```
+- **If command fails with "git: 'ms' is not a git command"**: Build environment NOT initialized
+- **Required Action**: Execute `${Edge_Repo}\depot_tools\scripts\setup\initEdgeEnv.cmd ${Edge_Repo}`
+- **If command succeeds**: Build environment is initialized, proceed to Step 2
+
+**STEP 2: Output Directory Validation Check**
+```powershell
+# Test if output directories exist
+cd ${Edge_Repo}/src/out/debug_x64
+```
+OR
+```powershell
+cd ${Edge_Repo}/src/out/release_x64
+```
+- **If command fails with "Cannot find path because it does not exist"**: Output folder NOT created
+- **Required Action**: Execute `autogn x64 debug` or `autogn x64 release` to create output folder
+- **If command succeeds**: Output directory exists, proceed to build
+
+#### MANDATORY Build Commands (ONLY THESE ALLOWED FROM EDGEBUILD.MD)
+**STRICTLY REQUIRED**: Use ONLY these exact commands from edgebuild.md in this exact sequence:
+
+1. **Navigate to Source Directory** (MANDATORY)
+   ```powershell
+   cd ${Edge_Repo}/src
+   ```
+
+2. **Sync Dependencies** (WHEN NEEDED)
+   ```powershell
+   gclient sync
+   ```
+   - Use after git operations or when DEPS files changed
+
+3. **Generate Build Configuration** (WHEN OUTPUT DIRECTORY MISSING)
+   ```powershell
+   # For debug build
+   autogn x64 debug
+   
+   # For release build  
+   autogn x64 release
+   ```
+
+4. **Build Code** (MANDATORY AFTER CODE CHANGES)
+   ```powershell
+   # Build debug version
+   autoninja -C out\debug_x64 chrome
+   
+   # Build release version
+   autoninja -C out\release_x64 chrome
+   ```
+
+5. **Format Code** (MANDATORY BEFORE COMMIT)
+   ```powershell
+   git ms format --upstream=origin/main
+   ```
+
+#### ABSOLUTELY PROHIBITED Build Practices (NEVER DO THESE)
+- ❌ **ABSOLUTELY FORBIDDEN**: Custom command combinations not in edgebuild.md
+- ❌ **ABSOLUTELY FORBIDDEN**: Creative interpretations of build commands
+- ❌ **ABSOLUTELY FORBIDDEN**: Skipping environment validation checks
+- ❌ **ABSOLUTELY FORBIDDEN**: Using alternative build tools or commands
+- ❌ **ABSOLUTELY FORBIDDEN**: Modifying the prescribed build sequence
+
+#### REQUIRED Build Sequence After Code Changes
+```powershell
+# MANDATORY: Always follow this exact sequence after code modifications
+cd ${Edge_Repo}/src; gclient sync; autoninja -C out\debug_x64 chrome; git ms format --upstream=origin/main
+```
+
+#### UNIVERSAL Build Compliance Verification - AFTER EVERY CODE CHANGE
+After ANY code modification, you MUST:
+1. Execute MANDATORY environment validation checks (Steps 1 & 2)
+2. Use ONLY commands from edgebuild.md in prescribed sequence
+3. NOT create custom command combinations under ANY circumstances
+4. NOT skip environment validation steps under ANY circumstances
+5. This applies to ALL tasks, ALL code changes, ALL scenarios without exception
+
+#### ENFORCEMENT ACROSS ALL OPERATIONS
+- **After Implementation**: MANDATORY build environment validation and compilation
+- **After Bug Fixes**: MANDATORY build environment validation and compilation
+- **After Refactoring**: MANDATORY build environment validation and compilation
+- **After Any Code Change**: MANDATORY build environment validation and compilation
+```
+
+### 6. Error Handling and Recovery
 
 All agents must include:
 - **Iterative Error Resolution**: Fix compile/runtime errors systematically
@@ -226,7 +329,7 @@ All agents must include:
 - **Context Preservation**: Maintain state across error recovery cycles
 - **User Communication**: Clear status updates and next steps
 
-### 6. Mandatory Haystack Search Integration
+### 7. Mandatory Haystack Search Integration
 
 All generated agents must include this exact section:
 
@@ -347,6 +450,12 @@ Before finalizing any generated agent, verify:
 - [ ] **MANDATORY: VS Code default search methods absolutely prohibited in ALL contexts**
 - [ ] **MANDATORY: Haystack search methods required universally for discovery, implementation, validation, verification**
 - [ ] **MANDATORY: Zero tolerance policy for prohibited search methods clearly stated**
+- [ ] **MANDATORY: Build environment validation requirements included with exact environment checks**
+- [ ] **MANDATORY: Strict build command compliance enforced using ONLY commands from edgebuild.md**
+- [ ] **MANDATORY: Build environment initialization check (git ms format test) included**
+- [ ] **MANDATORY: Output directory validation check (cd to out directories) included**
+- [ ] **MANDATORY: Prohibition of custom command combinations clearly stated**
+- [ ] **MANDATORY: Build process required after every code modification**
 - [ ] Build validation steps present
 - [ ] Test execution requirements defined
 - [ ] Error handling and recovery logic included
