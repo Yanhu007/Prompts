@@ -28,6 +28,7 @@ All generated agents must incorporate these core principles:
 
 #### Pre-execution Safety Checks
 - **Branch Safety**: Work on current branch but verify it's not main branch
+- **Single Terminal Usage**: Use ONLY ONE terminal for ALL command-line operations (penalty for violations)
 - **Build Validation**: Ensure builds succeed before making changes
 - **Test Coverage**: Run relevant tests to validate changes
 - **Code Review Readiness**: Prepare changes for proper code review
@@ -113,6 +114,34 @@ performed on the current branch. However, you **MUST**:
 When running multiple git commands, use semicolon (`;`) separator instead of `&&`:
 - ✅ Correct: `git add .; git commit -m "message"; git push`
 - ❌ Incorrect: `git add . && git commit -m "message" && git push`
+
+### Terminal Usage Requirements - CRITICAL MANDATORY COMPLIANCE
+**ABSOLUTE REQUIREMENT**: All generated agents MUST use ONLY ONE TERMINAL for ALL command-line operations throughout the entire execution. Creating multiple terminals is STRICTLY FORBIDDEN and will result in penalties.
+
+#### MANDATORY Terminal Management (ONLY THIS ALLOWED)
+- **Single Terminal**: Use ONLY ONE terminal session for ALL command execution - REQUIRED FOR ALL OPERATIONS
+- **Command Chaining**: Chain multiple commands using semicolon (`;`) when necessary
+- **Sequential Execution**: Execute commands sequentially in the same terminal session
+- **UNIVERSAL APPLICATION**: This single terminal requirement applies to ALL tasks, ALL steps, ALL scenarios without exception
+- **NO ALTERNATIVES**: Creating additional terminals is STRICTLY PROHIBITED under any circumstances
+
+#### STRICTLY PROHIBITED Terminal Practices (NEVER DO THESE)
+- ❌ **ABSOLUTELY FORBIDDEN**: Creating multiple terminals - PENALTY FOR VIOLATION
+- ❌ **ABSOLUTELY FORBIDDEN**: Parallel terminal execution - PENALTY FOR VIOLATION
+- ❌ **ABSOLUTELY FORBIDDEN**: Background terminal processes - PENALTY FOR VIOLATION
+- ❌ **ABSOLUTELY FORBIDDEN**: Terminal switching or management - PENALTY FOR VIOLATION
+
+#### REQUIRED Terminal Usage Examples
+- ✅ **REQUIRED FORMAT**: Execute all commands in single terminal session
+- ✅ **REQUIRED FORMAT**: Chain commands: `gclient sync; autogn x64 debug; autoninja -C out/debug_x64 chrome`
+- ✅ **REQUIRED FORMAT**: Sequential execution in same terminal
+
+#### Universal Terminal Enforcement Rules
+**ALL generated agents MUST include explicit enforcement:**
+1. **Pre-Command Verification**: Before ANY command execution, verify using single terminal only
+2. **Universal Coverage**: Single terminal requirement for build, test, validation, verification
+3. **Zero Tolerance**: No exceptions, no additional terminals, penalty for violations
+4. **Command Planning**: Plan command sequences to work within single terminal session
 
 ### Haystack Search Requirements - UNIVERSAL MANDATORY COMPLIANCE
 **ABSOLUTE REQUIREMENT**: All generated agents MUST use ONLY Haystack search methods for ALL search operations across ALL tasks, ALL steps, and ALL scenarios without exception.
@@ -248,6 +277,52 @@ Before ANY search operation, you MUST verify:
 - **Code Review Preparation**: ONLY Haystack search methods allowed
 ```
 
+## Terminal Management Requirements - CRITICAL MANDATORY COMPLIANCE
+
+### Single Terminal Policy - UNIVERSAL ENFORCEMENT
+This agent uses **ONLY ONE TERMINAL** for ALL command-line operations across ALL tasks, ALL steps, and ALL scenarios.
+Creating multiple terminals is **ABSOLUTELY PROHIBITED** and will result in penalties.
+
+#### MANDATORY Terminal Management (ONLY THIS ALLOWED)
+- **Single Terminal**: Use ONLY ONE terminal session for ALL command execution - REQUIRED FOR ALL OPERATIONS
+- **Command Chaining**: Chain multiple commands using semicolon (`;`) when necessary - REQUIRED FORMAT
+- **Sequential Execution**: Execute commands sequentially in the same terminal session - MANDATORY APPROACH
+- **UNIVERSAL APPLICATION**: This single terminal requirement applies to ALL tasks, ALL steps, ALL scenarios without exception
+
+#### ABSOLUTELY PROHIBITED Terminal Practices (PENALTY FOR VIOLATIONS)
+- ❌ **ABSOLUTELY FORBIDDEN**: Creating multiple terminals - PENALTY FOR VIOLATION
+- ❌ **ABSOLUTELY FORBIDDEN**: Parallel terminal execution - PENALTY FOR VIOLATION  
+- ❌ **ABSOLUTELY FORBIDDEN**: Background terminal processes - PENALTY FOR VIOLATION
+- ❌ **ABSOLUTELY FORBIDDEN**: Terminal switching or management - PENALTY FOR VIOLATION
+
+#### REQUIRED Terminal Usage Examples
+```
+# MANDATORY: Execute all commands in single terminal session
+run_in_terminal("gclient sync; autogn x64 debug; autoninja -C out/debug_x64 chrome")
+
+# MANDATORY: Chain commands with semicolon separator
+run_in_terminal("git add .; git commit -m 'message'; git push")
+
+# MANDATORY: Sequential execution in same terminal
+run_in_terminal("cd ${Edge_Repo}/src; gclient sync; autogn x64 debug")
+```
+
+#### UNIVERSAL Terminal Compliance Verification - BEFORE EVERY COMMAND
+Before ANY command execution, you MUST verify:
+1. Using ONLY ONE terminal session for ALL operations
+2. NOT creating ANY additional terminals under ANY circumstances
+3. Planning command sequences to work within single terminal session
+4. This applies to ALL tasks, ALL steps, ALL scenarios, including build, test, validation, verification
+
+#### ENFORCEMENT ACROSS ALL OPERATIONS
+- **Discovery Phase**: ONLY single terminal allowed
+- **Implementation Phase**: ONLY single terminal allowed
+- **Validation Phase**: ONLY single terminal allowed
+- **Verification Phase**: ONLY single terminal allowed
+- **Error Resolution**: ONLY single terminal allowed
+- **Code Review Preparation**: ONLY single terminal allowed
+```
+
 ## User Interaction Protocol
 
 When generating an agent:
@@ -264,6 +339,10 @@ Before finalizing any generated agent, verify:
 - [ ] Branch safety check included (must not work on main branch)
 - [ ] Edge build system knowledge incorporated (edgebuild.md)
 - [ ] Git command syntax uses semicolon (`;`) separators
+- [ ] **MANDATORY: Single terminal usage enforced for ALL command-line operations across ALL tasks, steps, and scenarios**
+- [ ] **MANDATORY: Multiple terminal creation absolutely prohibited with penalty enforcement**
+- [ ] **MANDATORY: Terminal usage policy and compliance verification included**
+- [ ] **MANDATORY: Command chaining and sequential execution requirements specified**
 - [ ] **MANDATORY: Haystack search methods enforced for ALL search operations across ALL tasks, steps, and scenarios**
 - [ ] **MANDATORY: VS Code default search methods absolutely prohibited in ALL contexts**
 - [ ] **MANDATORY: Haystack search methods required universally for discovery, implementation, validation, verification**
