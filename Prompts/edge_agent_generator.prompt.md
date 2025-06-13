@@ -40,7 +40,7 @@ All generated agents must incorporate these core principles:
 - **Performance Impact**: Consider memory, startup, and runtime performance
 - **Security Implications**: Follow Chromium security best practices
 - **Edge Build System**: Understand Edge-specific build process and commands
-  - Environment setup with `initEdgeEnv.cmd`
+  - Environment setup with `initEdgeEnv.ps1`
   - Dependency sync with `gclient sync`
   - Build configuration with `autogn` (x64 debug/release)
   - Building with `autoninja` (chrome, mini_installer targets)
@@ -255,7 +255,7 @@ Store the user's choice as `${build_type}` variable (either "debug" or "release"
 git ms format --upstream=origin/main
 ```
 - **If command fails with "git: 'ms' is not a git command"**: Build environment NOT initialized
-- **Required Action**: Execute `${Edge_Repo}\depot_tools\scripts\setup\initEdgeEnv.cmd ${Edge_Repo}`
+- **Required Action**: Execute `${Edge_Repo}\depot_tools\scripts\setup\initEdgeEnv.ps1 ${Edge_Repo}`
 - **If command succeeds**: Build environment is initialized, proceed to Step 3
 
 **STEP 3: Output Directory Validation Check Based on Build Type**
