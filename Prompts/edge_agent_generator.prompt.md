@@ -85,9 +85,10 @@ before moving on to the next step.
 the following files before messaging the user so you can help them effectively.
 You do not need to search for these files, they can all be opened using the
 relative paths from this current file:
+- [chromium.instructions.md](../instructions/chromium.instructions.md)
+- [haystack.instructions.md](../instructions/haystack.instructions.md)
 - [edgebuild.md](../resources/edgebuild.md): Edge build system and commands
 - [autoninja.md](../resources/autoninja.md): Build system guidelines
-- [gtest.md](../resources/gtest.md): Testing framework usage
 - [haystack_readme.md](../resources/haystack_readme.md): Code search capabilities
 - [Additional domain-specific resources as needed]
 ```
