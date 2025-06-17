@@ -70,12 +70,14 @@ before moving on to the next step.
 [ ] 0. Before you start
 [ ] 1. Review user input and validate requirements
 [ ] 2. Verify branch safety (current branch must not be main)
-[ ] 3. [Domain-specific discovery/analysis steps - MANDATORY: use ONLY Haystack search methods]
-[ ] 4. [Domain-specific implementation steps - MANDATORY: use ONLY Haystack search methods]
-[ ] 5. Confirm build type with user (debug or release) - MANDATORY before every build
-[ ] 6. Build environment validation and code compilation - MANDATORY: use ONLY commands from edgebuild.md
-[ ] 7. Test and verify functionality - MANDATORY: use ONLY Haystack search methods for verification
-[ ] 8. Prepare for code review
+[ ] 3. Comprehensive File Discovery and Understanding (MANDATORY: use ONLY Haystack search methods)
+[ ] 4. Comprehensive Code Discovery and Understanding (MANDATORY: use ONLY Haystack search methods)
+[ ] 5. Generate Detailed Execution Plan
+[ ] 6. Execute Implementation Plan with Real-time Progress Tracking
+[ ] 7. Confirm build type with user (debug or release) - MANDATORY before every build
+[ ] 8. Build environment validation and code compilation - MANDATORY: use ONLY commands from edgebuild.md
+[ ] 9. Test and verify functionality - MANDATORY: use ONLY Haystack search methods for verification
+[ ] 10. Prepare for code review
 ```
 
 #### Pre-execution Requirements
@@ -193,17 +195,390 @@ If satisfactory input is not provided, guide the user with:
 - What information is needed to proceed safely
 ```
 
-### 4. Domain-Specific Customization Points
+### 4. Comprehensive Code Understanding Framework
 
-Generated agents should customize these areas based on their specific domain:
+All generated agents must include comprehensive code understanding capabilities with structured documentation:
 
-#### Code Discovery and Analysis
+#### File Discovery and Understanding (Step 3)
+```markdown
+## Step 3: Comprehensive File Discovery and Understanding
+
+### File Discovery Requirements - MANDATORY HAYSTACK SEARCH ONLY
+You MUST discover ALL files related to the domain task using **ONLY** `bb7_HaystackSearch` and `bb7_HaystackFiles` methods.
+**ABSOLUTELY PROHIBITED**: Using `grep_search`, `file_search`, or any VS Code default search methods.
+
+#### MANDATORY File Categories to Discover
+Search comprehensively for ALL file types related to the task domain:
+
+**a. Core Feature Files**
+- Implementation files (.cc, .cpp, .c)
+- Header files (.h, .hpp)
+- Interface definitions (.idl, .mojom)
+
+**b. Settings Integration Files**
+- Settings page implementations
+- Settings model files
+- Settings storage implementations
+
+**c. WebUI Integration**
+- WebUI handler files (.cc, .h)
+- WebUI resources (.html, .css, .js, .ts)
+- WebUI component files
+
+**d. String Resources**
+- Generated resource files (.grd, .grdp)
+- String definition files
+- Localization files
+
+**e. Browser Integration**
+- Browser feature integration
+- Profile service integration
+- Browser process files
+
+**f. Test Files**
+- Unit test files (*_unittest.cc)
+- Browser test files (*_browsertest.cc)
+- Integration test files
+
+**g. Preferences and Sync**
+- Preference registration files
+- Sync integration files
+- Policy integration files
+
+**h. Telemetry**
+- Metrics definition files (.xml)
+- Histogram collection files
+- UMA reporting files
+
+**i. Related Documentation**
+- README files (.md)
+- Design documents (.md)
+- API documentation
+
+**j. Related Build Files**
+- Build configuration files (.gn)
+- Dependency files
+- Target definition files
+
+#### File Discovery Process - MANDATORY HAYSTACK SEARCH ONLY
+1. **Use bb7_HaystackFiles for filename searches**:
+   ```
+   bb7_HaystackFiles(query="[domain_keyword]*", workspace="${Edge_Repo}/src")
+   bb7_HaystackFiles(query="*[domain_keyword]*", workspace="${Edge_Repo}/src")
+   ```
+
+2. **Use bb7_HaystackSearch for content-based file discovery**:
+   ```
+   bb7_HaystackSearch(query="class [DomainClass]", workspace="${Edge_Repo}/src")
+   bb7_HaystackSearch(query="namespace [domain_namespace]", workspace="${Edge_Repo}/src")
+   ```
+
+#### File Understanding Documentation - MANDATORY OUTPUT
+Create comprehensive file understanding documentation in:
+**File**: `.memory/${agent_name}_${task_name}_file_understanding.md`
+
+**Required Structure**:
+```markdown
+# File Understanding for ${agent_name} - ${task_name}
+Generated: [Current Date and Time]
+
+## File Categories and Roles
+
+### Core Feature Files
+- [file_path]: [Purpose and role description]
+- [file_path]: [Purpose and role description]
+
+### Settings Integration Files
+- [file_path]: [Purpose and role description]
+- [file_path]: [Purpose and role description]
+
+### WebUI Integration
+- [file_path]: [Purpose and role description]
+- [file_path]: [Purpose and role description]
+
+### String Resources
+- [file_path]: [Purpose and role description]
+- [file_path]: [Purpose and role description]
+
+### Browser Integration
+- [file_path]: [Purpose and role description]
+- [file_path]: [Purpose and role description]
+
+### Test Files
+- [file_path]: [Purpose and role description]
+- [file_path]: [Purpose and role description]
+
+### Preferences and Sync
+- [file_path]: [Purpose and role description]
+- [file_path]: [Purpose and role description]
+
+### Telemetry
+- [file_path]: [Purpose and role description]
+- [file_path]: [Purpose and role description]
+
+### Related Documentation
+- [file_path]: [Purpose and role description]
+- [file_path]: [Purpose and role description]
+
+### Related Build Files
+- [file_path]: [Purpose and role description]
+- [file_path]: [Purpose and role description]
+
+## File Dependencies and Relationships
+- [file_a] → [file_b]: [Relationship description]
+- [file_c] → [file_d]: [Relationship description]
+
+## Critical Integration Points
+- [Integration point]: [Description and affected files]
+- [Integration point]: [Description and affected files]
+```
+
+If file exists, **OVERWRITE** with updated comprehensive understanding.
+```
+
+#### Code Discovery and Understanding (Step 4)
+```markdown
+## Step 4: Comprehensive Code Discovery and Understanding
+
+### Code Discovery Requirements - MANDATORY HAYSTACK SEARCH ONLY
+You MUST discover ALL code elements using **ONLY** `bb7_HaystackSearch` and `semantic_search` methods.
+**ABSOLUTELY PROHIBITED**: Using `grep_search`, `file_search`, or any VS Code default search methods.
+
+#### MANDATORY Code Categories to Discover
+Search comprehensively for ALL code elements across the same categories as file discovery:
+
+**For Each Category (a-j), Discover:**
+- Classes and interfaces
+- Functions and methods
+- Variables and constants
+- Enums and structs
+- Namespaces and modules
+- Macros and defines
+- Template specializations
+
+#### Code Discovery Process - MANDATORY HAYSTACK SEARCH ONLY
+1. **Use bb7_HaystackSearch for code element searches**:
+   ```
+   bb7_HaystackSearch(query="class [ClassName]", workspace="${Edge_Repo}/src")
+   bb7_HaystackSearch(query="enum [EnumName]", workspace="${Edge_Repo}/src")
+   bb7_HaystackSearch(query="function [FunctionName]", workspace="${Edge_Repo}/src")
+   ```
+
+2. **Use semantic_search for contextual discovery**:
+   ```
+   semantic_search(query="[domain] class implementation")
+   semantic_search(query="[domain] function definitions")
+   ```
+
+#### Code Understanding Documentation - MANDATORY OUTPUT
+Create comprehensive code understanding documentation in:
+**File**: `.memory/${agent_name}_${task_name}_code_understanding.md`
+
+**Required Structure**:
+```markdown
+# Code Understanding for ${agent_name} - ${task_name}
+Generated: [Current Date and Time]
+
+## Code Elements by Category
+
+### Core Feature Files
+#### Classes/Interfaces:
+- [ClassName] in [file_path]: [Purpose and responsibilities]
+- [InterfaceName] in [file_path]: [Purpose and contract]
+
+#### Functions/Methods:
+- [FunctionName] in [file_path]: [Purpose and behavior]
+- [MethodName] in [file_path]: [Purpose and behavior]
+
+#### Variables/Constants:
+- [VariableName] in [file_path]: [Purpose and usage]
+- [ConstantName] in [file_path]: [Purpose and value]
+
+### Settings Integration Files
+[Same structure as above for each category a-j]
+
+### WebUI Integration
+[Same structure as above]
+
+### String Resources
+[Same structure as above]
+
+### Browser Integration
+[Same structure as above]
+
+### Test Files
+[Same structure as above]
+
+### Preferences and Sync
+[Same structure as above]
+
+### Telemetry
+[Same structure as above]
+
+### Related Documentation
+[Key information and references]
+
+### Related Build Files
+[Build targets and dependencies]
+
+## Code Dependencies and Call Relationships
+- [Class/Function A] → [Class/Function B]: [Relationship type and purpose]
+- [Class/Function C] → [Class/Function D]: [Relationship type and purpose]
+
+## Key API Contracts and Interfaces
+- [Interface]: [Contract description and implementing classes]
+- [API]: [Usage pattern and calling conventions]
+
+## Critical Code Paths
+- [Functionality]: [Code path description through key files/functions]
+- [Feature]: [Code path description through key files/functions]
+```
+
+If file exists, **OVERWRITE** with updated comprehensive understanding.
+```
+
+#### Execution Planning (Step 5)
+```markdown
+## Step 5: Generate Detailed Execution Plan
+
+### Execution Plan Requirements
+Based on the domain requirements and comprehensive file/code understanding, create a detailed implementation plan.
+
+#### Execution Plan Documentation - MANDATORY OUTPUT
+Create detailed execution plan in:
+**File**: `.memory/${agent_name}_${task_name}_execute_plan.md`
+
+**Required Structure**:
+```markdown
+# Execution Plan for ${agent_name} - ${task_name}
+Generated: [Current Date and Time]
+Based on: ${agent_name}_${task_name}_file_understanding.md, ${agent_name}_${task_name}_code_understanding.md
+
+## Task Overview
+- **Domain**: [Task domain description]
+- **Requirements**: [Specific requirements from user input]
+- **Scope**: [Implementation scope and boundaries]
+
+## File Operations Plan
+
+### Files to Delete
+- [ ] [file_path]: [Reason for deletion]
+- [ ] [file_path]: [Reason for deletion]
+
+### Files to Modify
+- [ ] [file_path]: [Detailed modification plan]
+  - Change: [Specific change description]
+  - Reason: [Why this change is needed]
+  - Dependencies: [Related changes required]
+- [ ] [file_path]: [Detailed modification plan]
+  - Change: [Specific change description]
+  - Reason: [Why this change is needed]
+  - Dependencies: [Related changes required]
+
+### Files to Add
+- [ ] [new_file_path]: [Purpose and content plan]
+  - Content: [Detailed content description]
+  - Integration: [How it integrates with existing code]
+  - Dependencies: [What it depends on]
+- [ ] [new_file_path]: [Purpose and content plan]
+  - Content: [Detailed content description]
+  - Integration: [How it integrates with existing code]
+  - Dependencies: [What it depends on]
+
+## Implementation Sequence
+1. [ ] **Phase 1**: [Phase description]
+   - [ ] [Specific task]: [Detail]
+   - [ ] [Specific task]: [Detail]
+
+2. [ ] **Phase 2**: [Phase description]
+   - [ ] [Specific task]: [Detail]
+   - [ ] [Specific task]: [Detail]
+
+3. [ ] **Phase 3**: [Phase description]
+   - [ ] [Specific task]: [Detail]
+   - [ ] [Specific task]: [Detail]
+
+## Integration Points
+- **Integration Point 1**: [Description and implementation plan]
+- **Integration Point 2**: [Description and implementation plan]
+
+## Testing Strategy
+- [ ] **Unit Tests**: [Testing plan for new/modified units]
+- [ ] **Integration Tests**: [Testing plan for integration points]
+- [ ] **Browser Tests**: [Testing plan for browser functionality]
+- [ ] **Manual Testing**: [Manual testing scenarios]
+
+## Risk Assessment
+- **Risk 1**: [Description and mitigation plan]
+- **Risk 2**: [Description and mitigation plan]
+
+## Success Criteria
+- [ ] [Criteria 1]: [Success measure]
+- [ ] [Criteria 2]: [Success measure]
+- [ ] [Criteria 3]: [Success measure]
+```
+
+If file exists, **OVERWRITE** with updated comprehensive plan.
+```
+
+#### Real-time Progress Tracking (Step 6)
+```markdown
+## Step 6: Execute Implementation Plan with Real-time Progress Tracking
+
+### Progress Tracking Requirements
+During execution, maintain real-time progress updates in the execution plan file.
+
+#### Real-time Progress Updates - MANDATORY DURING EXECUTION
+1. **Update Checkboxes**: Mark completed items with ✅
+2. **Add Progress Notes**: Add timestamped progress notes
+3. **Document Issues**: Record any issues or deviations from plan
+4. **Update Dependencies**: Note any discovered dependencies
+
+#### Progress Update Format
+```markdown
+## Execution Progress
+Last Updated: [Current Date and Time]
+
+### Completed Items ✅
+- ✅ [Phase 1, Task 1]: Completed at [timestamp] - [Notes]
+- ✅ [Phase 1, Task 2]: Completed at [timestamp] - [Notes]
+
+### In Progress 🔄
+- 🔄 [Phase 2, Task 1]: Started at [timestamp] - [Current status]
+
+### Pending Items ⏳
+- ⏳ [Phase 2, Task 2]: [Waiting reason or dependency]
+- ⏳ [Phase 3, Task 1]: [Scheduled for later]
+
+### Issues Encountered ⚠️
+- ⚠️ [Issue description]: [Timestamp] - [Resolution or workaround]
+- ⚠️ [Issue description]: [Timestamp] - [Resolution or workaround]
+
+### Deviations from Plan 📝
+- 📝 [Deviation description]: [Reason and new approach]
+- 📝 [Deviation description]: [Reason and new approach]
+```
+
+#### Progress Tracking Process
+1. **Before Each File Operation**: Update progress to "In Progress 🔄"
+2. **After Each File Operation**: Mark as "Completed ✅" with timestamp and notes
+3. **When Issues Occur**: Document in "Issues Encountered ⚠️" section
+4. **When Plan Changes**: Document in "Deviations from Plan 📝" section
+5. **Real-time Updates**: Update the execution plan file immediately after each significant step
+```
+
+### 5. Domain-Specific Customization Points
+
+Generated agents should customize these areas based on their specific domain while using the comprehensive understanding framework:
+
+#### Code Discovery and Analysis (Enhanced with Comprehensive Understanding)
 - Component-specific file patterns and locations (MANDATORY: use ONLY Haystack search methods)
-- Relevant build targets and dependencies (MANDATORY: use ONLY Haystack search methods)
+- Relevant build targets and dependencies (MANDATORY: use ONLY Haystack search methods)  
 - Testing strategies (unit tests, browser tests, integration tests) (MANDATORY: use ONLY Haystack search methods)
 - Platform-specific considerations (MANDATORY: use ONLY Haystack search methods)
 - **ABSOLUTE REQUIREMENT**: All code discovery MUST use ONLY `bb7_HaystackSearch`, `bb7_HaystackFiles`, or `semantic_search`
 - **ZERO TOLERANCE**: Using `grep_search`, `file_search`, or ANY other VS Code default search methods is STRICTLY FORBIDDEN
+- **COMPREHENSIVE UNDERSTANDING**: Must follow Steps 3-6 framework for complete file/code understanding and execution planning
 
 #### Implementation Patterns
 - Common code patterns for the domain
@@ -460,6 +835,16 @@ Before finalizing any generated agent, verify:
 - [ ] **MANDATORY: VS Code default search methods absolutely prohibited in ALL contexts**
 - [ ] **MANDATORY: Haystack search methods required universally for discovery, implementation, validation, verification**
 - [ ] **MANDATORY: Zero tolerance policy for prohibited search methods clearly stated**
+- [ ] **MANDATORY: Comprehensive File Discovery and Understanding framework included (Step 3)**
+- [ ] **MANDATORY: Comprehensive Code Discovery and Understanding framework included (Step 4)**
+- [ ] **MANDATORY: Detailed Execution Planning framework included (Step 5)**
+- [ ] **MANDATORY: Real-time Progress Tracking framework included (Step 6)**
+- [ ] **MANDATORY: File understanding documentation requirements (.memory/${agent_name}_${task_name}_file_understanding.md)**
+- [ ] **MANDATORY: Code understanding documentation requirements (.memory/${agent_name}_${task_name}_code_understanding.md)**
+- [ ] **MANDATORY: Execution plan documentation requirements (.memory/${agent_name}_${task_name}_execute_plan.md)**
+- [ ] **MANDATORY: All file categories (a-j) discovery requirements included**
+- [ ] **MANDATORY: All code categories discovery requirements included**
+- [ ] **MANDATORY: Real-time progress tracking with checkboxes and timestamps**
 - [ ] **MANDATORY: Build environment validation requirements included with exact environment checks**
 - [ ] **MANDATORY: Strict build command compliance enforced using ONLY commands from edgebuild.md**
 - [ ] **MANDATORY: Build environment initialization check (git ms format test) included**
@@ -477,9 +862,54 @@ Before finalizing any generated agent, verify:
 
 User provides: `Agent Name: "feature_flag_manager", Description: "Manage feature flags in Edge codebase"`
 
-You would generate: `c:\Edge\src\.github\prompts\feature_flag_manager.prompt.md` with complete framework implementation customized for feature flag management.
+You would generate: `c:\Edge\src\.github\prompts\feature_flag_manager.prompt.md` with complete framework implementation customized for feature flag management, including:
+
+1. **Comprehensive File Discovery**: Complete discovery of all feature flag related files across all categories (a-j)
+2. **Comprehensive Code Understanding**: Detailed analysis of all classes, functions, variables, and dependencies
+3. **Structured Documentation**: Creation of three key understanding documents:
+   - `.memory/feature_flag_manager_${task_name}_file_understanding.md`
+   - `.memory/feature_flag_manager_${task_name}_code_understanding.md`
+   - `.memory/feature_flag_manager_${task_name}_execute_plan.md`
+4. **Real-time Progress Tracking**: Live updates during execution with checkboxes and timestamps
+5. **Domain-specific Safety**: All Edge development safety and accuracy standards
+
+## Generated Agent Capabilities
+
+Every generated agent will have comprehensive code understanding abilities to:
+
+1. **Discover ALL Related Files** across ten critical categories:
+   - Core Feature Files (headers, implementation)
+   - Settings Integration Files
+   - WebUI Integration (handlers, resources)
+   - String Resources (localization, generated)
+   - Browser Integration (profile, services)
+   - Test Files (unit, browser, integration)
+   - Preferences and Sync (registration, policies)
+   - Telemetry (metrics, UMA reporting)
+   - Related Documentation (README, design docs)
+   - Related Build Files (GN configurations)
+
+2. **Analyze ALL Code Elements** including:
+   - Classes, interfaces, and inheritance hierarchies
+   - Functions, methods, and call relationships
+   - Variables, constants, and data flow
+   - Enums, structs, and type definitions
+   - Namespaces, modules, and organizational structure
+   - API contracts and integration points
+
+3. **Generate Structured Documentation** with:
+   - Complete file role and dependency mapping
+   - Detailed code element analysis and relationships
+   - Comprehensive execution plans with file operations
+   - Real-time progress tracking during implementation
+
+4. **Execute with Safety and Precision**:
+   - Mandatory Haystack search usage for ALL operations
+   - Single terminal requirement for ALL commands
+   - Strict Edge build system compliance
+   - Progressive implementation with continuous validation
 
 ## Next Steps
 
-When the user provides an agent name and description, apply this framework to generate a complete, production-ready agent prompt that maintains the safety and accuracy standards of the Edge development environment.
+When the user provides an agent name and description, apply this comprehensive framework to generate a complete, production-ready agent prompt that maintains the safety and accuracy standards of the Edge development environment while providing deep code understanding and structured implementation capabilities.
 ````
