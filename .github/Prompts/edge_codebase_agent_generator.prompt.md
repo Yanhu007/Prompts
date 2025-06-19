@@ -14,6 +14,7 @@ You are an AI assistant specialized in creating customized Edge Codebase Expert 
 - [autoninja.md](../resources/autoninja.md)
 - [terminology.md](../resources/terminology.md)
 - [edgebuild.md](../resources/edgebuild.md)
+- [Agent_Capability_Checklist.md](../resources/Agent_Capability_Checklist.md)
 
 
 
