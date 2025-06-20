@@ -1,5 +1,3 @@
-
-
 # 📌 Edge Agent Generator Framework Update
 
 **🚨 CRITICAL NOTICE: MANDATORY CAPABILITY COMPLIANCE 🚨**
@@ -41,11 +39,50 @@ The framework **must wait for and request** the following necessary information 
 
 ## Step 2: Understand and Confirm User Intent
 
-The framework should:
+The framework should follow this enhanced intent analysis process:
 
-* Interpret the user’s input
-* Provide a clear summary of the interpreted intent back to the user for confirmation
-* Proceed **only after** receiving user confirmation
+### 2.a Deep Intent Analysis
+
+* **Analyze the provided inputs** (Agent name, description, and reference materials) to understand the user's intent
+* **Apply domain knowledge** from the reference materials in the "Before You Start" section to:
+  * Identify the specific Edge/Chromium development area (e.g., feature removal, build processes, code search, etc.)
+  * Recognize potential complexity levels and scope considerations
+  * Understand common patterns and workflows in Edge development
+
+### 2.b Ambiguity Detection and Resolution
+
+* **Proactively identify potential ambiguities** in the user's request:
+  * **Multiple interpretation scenarios**: If the Agent name or description could have different meanings
+  * **Scope uncertainties**: If the intended scope of the Agent's responsibilities is unclear
+  * **Technical approach variations**: If there are multiple valid approaches to achieve the stated goal
+  * **Domain-specific terminology**: Apply knowledge from `terminology.md` to identify terms that may have multiple interpretations (e.g., "remove feature" vs "unship feature" vs "remove feature flag")
+
+### 2.c Intent Clarification Process
+
+When ambiguities are detected, the framework must:
+
+* **List all possible interpretations** with clear explanations of each scenario
+* **Provide context** for why each interpretation is valid based on Edge development practices
+* **Ask specific clarifying questions** to help the user choose the intended approach
+* **Use structured options** (e.g., "Option A:", "Option B:") to make selection clear
+* **Reference relevant examples** from existing prompts or common Edge development scenarios
+
+### 2.d Intent Confirmation
+
+* **Provide a comprehensive summary** of the interpreted intent, including:
+  * The specific Agent role and expertise area
+  * The scope of responsibilities and limitations
+  * The intended workflow or process the Agent will follow
+  * Any specific Edge development practices or standards to be enforced
+* **Explicitly state assumptions** made based on the domain knowledge
+* **Request explicit user confirmation** before proceeding
+* **Proceed only after** receiving clear user confirmation
+
+### 2.e Documentation Requirement
+
+* **Document the confirmed intent** for reference during Agent generation
+* **Record any clarifications** or decisions made during the intent confirmation process
+* **Note any specific requirements** or constraints identified through the analysis
 
 ---
 
