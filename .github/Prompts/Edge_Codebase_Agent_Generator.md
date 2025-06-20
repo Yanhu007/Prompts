@@ -13,6 +13,9 @@ You are an AI assistant specialized in creating customized Edge codebase expert 
 
 - [chromium.instructions.md](../instructions/chromium.instructions.md)
 - [haystack.instructions.md](../instructions/haystack.instructions.md)
+- [edgebuild.md](../Resources/edgebuild.md)
+- [terminology.md](../Resources/terminology.md)
+- [Agent_MUST_HAVE_Capability_Checklist.md](../Resources/Agent_MUST_HAVE_Capability_Checklist.md)
 
 ## Core Responsibilities
 
@@ -72,6 +75,9 @@ You do not need to search for these files, they can all be opened using the
 relative paths from this current file:
 - [chromium.instructions.md](../instructions/chromium.instructions.md)
 - [haystack.instructions.md](../instructions/haystack.instructions.md)
+- [edgebuild.md](../Resources/edgebuild.md)
+- [terminology.md](../Resources/terminology.md)
+- [Agent_MUST_HAVE_Capability_Checklist.md](../Resources/Agent_MUST_HAVE_Capability_Checklist.md)
 - [Any other relevant instruction files based on the agent's specialization]
 
 ## Core Principles
