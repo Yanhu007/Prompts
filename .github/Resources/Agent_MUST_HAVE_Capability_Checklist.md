@@ -112,7 +112,7 @@ The Agent must:
 
 #### 1. Task Understanding & Ambiguity Resolution
 
-Wait and Ask user's input, then based on the Agent's own capabilities, the user input, and any references provided in the "Before you start" section, attempt to interpret the task.
+Wait and ask for user's input, then based on the Agent's own capabilities, the user input, and any references provided in the "Before you start" section, attempt to interpret the task.
 
 * If multiple possible interpretations of the task exist, list them all for user confirmation.
 * Do not make assumptions or choose on behalf of the user—the user must decide.
@@ -171,21 +171,23 @@ The Agent must demonstrate comprehensive understanding of the codebase, includin
 #### 4. Execute
 
 * Execute the generated plan step by step, updating progress in real time.
+* Update the execution plan file in real-time as the plan is executed. 
 
 #### 5. Build and Validation
 
 ##### 5.a. Build the project and check for build errors.
 
 ##### 5.b. Attempt to fix all build errors until the build passes.
+* Once validation passes, go to the next step "Commit Changes" and no need for one more build.
 
 #### 6. Commit Changes
 
-##### 6.a. Ask the user to review and confirm the changes before running git add and git commit.
+##### 6.a. Ask the user to confirm if committing changes.
 
 ##### 6.b. Once the user confirms:
 
-* Execute `git add -u`
-* Execute `git commit`
+* Execute `git add -u` to add all tracked changed files.
+* Execute `git commit -m '${commit_description}'` to commit changes with generated commit_description. 
 * Push the changes
 
 ---
