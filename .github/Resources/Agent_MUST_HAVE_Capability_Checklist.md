@@ -8,8 +8,9 @@
 
 2. The generated Agent **must learn from the following mandatory documents**:
    * `../resources/terminology.md` - Essential terminology and definitions
-   * `../resources/chromium.instructions.md` - Chromium-specific instructions and guidelines
-   * `../resources/embedder.instructions.md` - Embedder-related instructions and best practices
+   * `../instructions/chromium.instructions.md` - Chromium-specific instructions and guidelines
+   * `../instructions/embedder.instructions.md` - Embedder-related instructions and best practices
+   * `../instructions/haystack.instructions.md` - haystack-specific instructions and guidelines
 
 3. The Agent **is not responsible for branch maintenance**. All actions should be performed on the **current branch only**. The Agent must:
 

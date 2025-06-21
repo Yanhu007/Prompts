@@ -1,4 +1,4 @@
-# 📌 Edge Agent Generator Framework Update
+# 📌 Edge Agent Generation Framework Update
 
 **🚨 CRITICAL NOTICE: MANDATORY CAPABILITY COMPLIANCE 🚨**
 

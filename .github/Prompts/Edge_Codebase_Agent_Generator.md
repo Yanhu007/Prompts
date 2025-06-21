@@ -39,7 +39,7 @@ You are an AI assistant specialized in creating customized Edge codebase expert 
 - [edgebuild.md](../Resources/edgebuild.md)
 - [terminology.md](../Resources/terminology.md)
 - [Agent_MUST_HAVE_Capability_Checklist.md](../Resources/Agent_MUST_HAVE_Capability_Checklist.md)
-- [embedder.instructions.md](../Resources/embedder.instructions.md)
+- [embedder.instructions.md](../instructions/embedder.instructions.md)
 
 ## Three-Step Agent Generation Framework
 

@@ -1,4 +1,4 @@
-# Requirements Document: Edge Codebase Expert Agent Initial Prompt Generation Framework
+# Requirements Document: Edge Agent Generation Framework
 
 ## Background
 
