@@ -137,7 +137,7 @@ The Agent must demonstrate comprehensive understanding of the codebase, includin
   * Preferences and sync
   * Telemetry
   * Documentation
-  * Build files (.gn)
+  * Build files (.gn, DEPS)
 
 ##### 2.b. Code-Level Understanding
 

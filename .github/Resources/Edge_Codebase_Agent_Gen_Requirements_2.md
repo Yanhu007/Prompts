@@ -2,16 +2,6 @@
 
 The `edge_agent_generator` framework is updated to follow **three strict steps** for generating an agent.
 
-## 📖 Key Definitions
-
-**🤖 Agent**: A specialized AI assistant prompt designed to help with specific Edge/Chromium development tasks. The Agent is implemented as a structured prompt containing domain knowledge, capabilities, and behavioral instructions.
-
-**🔧 edge_agent_generator framework**: An automated system/process that generates compliant Agent prompts by following strict validation procedures and mandatory capability requirements.
-
-**📋 Capability**: A specific functional requirement or behavioral instruction that must be implemented in the generated Agent prompt, as defined in `.github/Resources/Agent_MUST_HAVE_Capability.md`.
-
-**✅ Validation**: The process of verifying that a generated Agent prompt contains all required capabilities and meets compliance standards through systematic checklist verification.
-
 ## ⚠️ CRITICAL COMPLIANCE REQUIREMENT
 
 **ALL capabilities defined in `.github/Resources/Agent_MUST_HAVE_Capability.md` are MANDATORY and NON-NEGOTIABLE:**

@@ -22,7 +22,7 @@ This `edge_agent_generator` framework should generate a new prompt file based on
 
 The `edge_agent_generator` framework should accept the following user inputs with **mandatory validation**:
 
-- `Agent Name` — Used as the filename for the generated `.md` file;
+- `Agent Name` — Used as the filename for the generated `.prompt.md` file;
 - `Agent Description` — A brief description of the agent's purpose;
 - `Reference Information` — Additional context or reference information that the agent should consider during prompt generation (if available).
 
@@ -36,7 +36,7 @@ The `edge_agent_generator` framework should accept the following user inputs wit
 - The `edge_agent_generator` framework should generate a markdown file containing the agent's prompt;
 - The generated file must meet the following requirements:
   - Save path: `.github/Prompts` directory;
-  - Filename format: `${Agent Name}_agent.md` (must exactly match the user-provided `Agent Name`);
+  - Filename format: `${Agent Name}_agent.prompt.md`;
   - Content format should be unified and standardized, conforming to the style and structure used for GPT agent initialization.
 
 **⚠️ Compliance Requirements**:

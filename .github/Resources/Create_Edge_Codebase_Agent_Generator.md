@@ -6,6 +6,12 @@ This document outlines the step-by-step process for creating the prompt for Edge
 
 The Edge Agent Generator Framework is designed to create intelligent agents that can understand and work with specific codebases by analyzing existing prompt structures and requirements.
 
+## 📖 Key Definitions
+
+**🤖 Agent**: A specialized AI assistant prompt designed to help with specific Edge/Chromium development tasks. The Agent is implemented as a structured prompt containing domain knowledge, capabilities, and behavioral instructions.
+
+**🔧 edge_agent_generator framework**: An automated system/process that generates compliant Agent prompts by following strict validation procedures and mandatory capability requirements.
+
 ## Step-by-Step Process
 
 1. **Extract and Analyze Existing Prompts**
@@ -22,7 +28,7 @@ The Edge Agent Generator Framework is designed to create intelligent agents that
    - Update the Edge Agent Generator Framework prompt in `.github/Prompts/Edge_Codebase_Agent_Generator.prompt.md` with standard markdown format
 
 4. **Validation Process**
-   - Copy `.github/Resources/Edge_Codebase_Agent_Gen_Checklist.md` as `.github/Resources/Edge_Codebase_Agent_Gen_Checklist_${YYYYMMDD-HHMMSS}.md`
+   - Copy `.github/Resources/Edge_Codebase_Agent_Gen_Checklist.md` as `.memory/Edge_Codebase_Agent_Gen_Checklist_${YYYYMMDD-HHMMSS}.md`
    - Validate the `.github/Prompts/Edge_Codebase_Agent_Generator.prompt.md` against the timestamped checklist
    - Update the checklist file in real-time using format `[✅]` or `[❌]` as the validation is executed
 
