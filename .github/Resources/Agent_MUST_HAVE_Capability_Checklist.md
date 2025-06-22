@@ -1,17 +1,17 @@
 # Agent MUST-HAVE Capability Checklist
 
-## � Mandatory Compliance Requirements
+## 🚫 Mandatory Compliance Requirements
 
 ### 📘 Learning and Build
 
 - [ ] The generated Agent must learn from `../Resources/edgebuild.md` and master how to build Edge code according to its documented instructions
-- [ ] The generated Agent must learn from `../Resources/terminology.md` - Essential terminology and definitions
+- [ ] The generated Agent must learn from the following mandatory documents: `../Resources/terminology.md` - Essential terminology and definitions
 - [ ] The generated Agent must learn from `../instructions/chromium.instructions.md` - Chromium-specific instructions and guidelines
 - [ ] The generated Agent must learn from `../instructions/embedder.instructions.md` - Embedder-related instructions and best practices
 - [ ] The generated Agent must learn from `../instructions/haystack.instructions.md` - haystack-specific instructions and guidelines
 - [ ] The Agent is not responsible for branch maintenance. All actions should be performed on the current branch only
-- [ ] Must explicitly inform the user that branch creation or switching is their responsibility
-- [ ] Must remind the user to create or switch to the correct target branch
+- [ ] Explicitly inform the user that branch creation or switching is their responsibility
+- [ ] Remind the user to create or switch to the correct target branch
 - [ ] If a new branch name and base branch are provided, the Agent may create or switch to that branch
 - [ ] If the current branch is `main`, the Agent must warn the user and instruct them to switch to or create a non-main branch
 - [ ] When combining multiple `git` commands, the Agent must use `;` instead of `&&`
@@ -28,6 +28,7 @@
 
 ### 🏗️ Build Process Guidelines
 
+- [ ] After completing code modifications, the Agent must enter the build phase
 - [ ] Use only the commands from `../Resources/edgebuild.md`
 - [ ] Follow the documented procedure exactly. No improvisation or custom command combinations are allowed
 - [ ] Check if the build environment is initialized: Run `git ms format --upstream=origin/main`
@@ -36,7 +37,7 @@
 - [ ] Check if output directory needs to be created: Run `cd ${Edge_Repo}/src/out/debug_x64` or `cd ${Edge_Repo}/src/out/release_x64`
 - [ ] If it fails with `Cannot find path`, then run `autogn` to create the output folder
 - [ ] Before building, confirm with the user whether to build `debug` or `release`
-- [ ] If the output folder check `cd ${Edge_Repo}/src/out/${build_type}_x64` fails: Run `autogn` to create it
+- [ ] Based on the user-selected `build_type`: If the output folder check `cd ${Edge_Repo}/src/out/${build_type}_x64` fails: Run `autogn` to create it
 - [ ] Then run one of the following: `autoninja -C out/${build_type}_x64 chrome` or `autoninja -C out/${build_type}_x64 mini_installer.exe`
 - [ ] The `initEdgeEnv` script should be changed to PowerShell (`initEdgeEnv.ps1`), not CMD
 - [ ] The Agent must pause and wait for the user's input when asking for `build_type`. Resume only after the input is received
@@ -75,7 +76,7 @@
 - [ ] Locate all related files, including: Header files (.h), Code files (Frontend, WebUI, C++, Android, iOS), Test files, Documentation files (.md), Configuration files (.xml, .gn, .json)
 - [ ] Understand the purpose of each file and the dependencies between them
 - [ ] Save the analysis to: `.memory/${agent_name}_${task_name}_file_understanding_${timestamp}.md` (Overwrite if the file already exists)
-- [ ] File search scope must cover: Core feature files, Settings integration, WebUI integration, String resources, Browser integration, Test files, Preferences and sync, Telemetry, Documentation, Build files (.gn)
+- [ ] File search scope must cover: Core feature files, Settings integration, WebUI integration, String resources, Browser integration, Test files, Preferences and sync, Telemetry, Documentation, Build files (.gn, DEPS)
 
 ##### 2.b. Code-Level Understanding
 
