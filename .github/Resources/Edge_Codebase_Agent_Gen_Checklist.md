@@ -3,7 +3,7 @@
 ## 🚨 CRITICAL COMPLIANCE REQUIREMENTS
 
 ### Mandatory Capability Compliance
-- [ ] **ABSOLUTE COMPLIANCE**: Framework MUST enforce 100% compliance with `Agent_MUST_HAVE_Capability_Checklist.md`
+- [ ] **ABSOLUTE COMPLIANCE**: Framework MUST enforce 100% compliance with `Agent_MUST_HAVE_Capability.md`
 - [ ] **ZERO TOLERANCE**: Framework MUST NOT allow any deviation, simplification, or omission of capabilities
 - [ ] **IMMEDIATE TERMINATION**: Framework MUST terminate if ANY capability requirement is violated
 - [ ] **COMPLETE VALIDATION**: Framework MUST validate 100% capability coverage before deployment
@@ -67,7 +67,7 @@
 ## Step 3: Agent Generation Workflow
 
 ### 3.a Capability Validation Checklist Generation
-- [ ] Framework MUST generate Agent Capability Validation Checklist based on `Agent_MUST_HAVE_Capability_Checklist.md`
+- [ ] Framework MUST generate Agent Capability Validation Checklist based on `Agent_MUST_HAVE_Capability.md`
 - [ ] Framework MUST include every capability from checklist without ANY modification
 - [ ] Framework MUST NOT ignore, simplify, alter, or omit ANY capability requirements
 - [ ] Framework MUST implement ALL capabilities exactly as specified with zero interpretation allowed
@@ -76,7 +76,7 @@
 
 ### 3.b Agent Prompt Generation
 - [ ] Framework MUST leverage user-provided domain knowledge
-- [ ] Framework MUST include complete content from `Agent_MUST_HAVE_Capability_Checklist.md`
+- [ ] Framework MUST include complete content from `Agent_MUST_HAVE_Capability.md`
 - [ ] Framework MUST implement ALL capabilities from checklist with ZERO modifications
 - [ ] Framework MUST NOT omit ANY capability requirements
 - [ ] Framework MUST NOT simplify ANY capability requirements
@@ -125,7 +125,7 @@
 ## Final Enforcement and Compliance Verification
 
 ### Mandatory Pre-Deployment Checklist
-- [ ] Framework MUST verify 100% capability coverage from `Agent_MUST_HAVE_Capability_Checklist.md`
+- [ ] Framework MUST verify 100% capability coverage from `Agent_MUST_HAVE_Capability.md`
 - [ ] Framework MUST verify zero modifications to capabilities
 - [ ] Framework MUST verify full functionality of each capability
 - [ ] Framework MUST verify complete documentation of all capability implementations

@@ -10,12 +10,7 @@ This framework should generate a new prompt file based on user input and save it
 
 ## Requirements
 
-### 1. Reference Materials
-
-- **Reference and extract** all existing prompts in the `.github/prompts` directory.
-- **Extract common structures and styles** from these prompts to form a standard template for Edge codebase expert agents.
-
-### 2. Agent Professional Capabilities
+### 1. Agent Professional Capabilities
 
 - The generated prompt should represent an **Edge codebase expert**.
 - The agent should:
@@ -23,7 +18,7 @@ This framework should generate a new prompt file based on user input and save it
   - Follow and advocate for **safe and accurate** code modification practices;
   - Consider common **considerations and best practices** when modifying Edge code.
 
-### 3. User Input
+### 2. User Input
 
 The prompt generation framework should accept the following user inputs:
 
@@ -31,7 +26,7 @@ The prompt generation framework should accept the following user inputs:
 - `Agent Description` — A brief description of the agent's purpose;
 - `Reference Information` — Additional context or target information that the agent should consider during generation.
 
-### 4. Output Requirements
+### 3. Output Requirements
 
 - The framework should generate a markdown file containing the agent's prompt;
 - The generated file must meet the following requirements:
@@ -39,7 +34,7 @@ The prompt generation framework should accept the following user inputs:
   - Filename must exactly match the user-provided `Agent Name` (e.g., `${Agent Name}_agent.md`);
   - Content format should be unified and standardized, conforming to the style and structure used for GPT agent initialization.
 
-### 5. Prompt Content Guidelines
+### 4. Prompt Content Guidelines
 
 The generated prompt should include the following content:
 
