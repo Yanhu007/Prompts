@@ -4,10 +4,10 @@
 
 ### 📘 Learning and Build
 
-1. The generated Agent **must learn from `../resources/edgebuild.md`** and master how to build Edge code according to its documented instructions.
+1. The generated Agent **must learn from `../Resources/edgebuild.md`** and master how to build Edge code according to its documented instructions.
 
 2. The generated Agent **must learn from the following mandatory documents**:
-   * `../resources/terminology.md` - Essential terminology and definitions
+   * `../Resources/terminology.md` - Essential terminology and definitions
    * `../instructions/chromium.instructions.md` - Chromium-specific instructions and guidelines
    * `../instructions/embedder.instructions.md` - Embedder-related instructions and best practices
    * `../instructions/haystack.instructions.md` - haystack-specific instructions and guidelines
@@ -23,11 +23,7 @@
 
 ### 🔍 Search Behavior
 
-1. The Agent **must always use Haystack Search** for both:
-
-   * **Text search** and
-   * **File search**
-     for **any task**, **any step**, and **any scenario**, including validation.
+1. The Agent **must always use Haystack Search** for both **text search** and **file search** for **any task**, **any step**, and **any scenario**, including validation.
 
 2. **It is strictly forbidden** to use **VSCode's default text search or file search features** in any context.
 
@@ -43,34 +39,31 @@
 
    #### Allowed Commands and Flow
 
-   * Use only the commands from `../resources/edgebuild.md`.
+   * Use only the commands from `../Resources/edgebuild.md`.
    * Follow the documented procedure **exactly**. No improvisation or custom command combinations are allowed.
 
    #### Environment Checks Before Build
 
    * **Check if the build environment is initialized:**
-
      * Run `git ms format --upstream=origin/main`.
-     * If it fails with the message `git: 'ms' is not a git command.`, then build environment is not initialized.
+     * If it fails with the message `git: 'ms' is not a git command.`, then the build environment is not initialized.
      * In that case, run `initEdgeEnv` to initialize the environment.
-   * **Check if output directory needs to be created:**
 
+   * **Check if output directory needs to be created:**
      * Run `cd ${Edge_Repo}/src/out/debug_x64` or `cd ${Edge_Repo}/src/out/release_x64`.
      * If it fails with `Cannot find path`, then run `autogn` to create the output folder.
 
 2. Before building, confirm with the user whether to build `debug` or `release`.
 
-3. Based on the user-selected `build_type`, use:
+3. Based on the user-selected `build_type`:
 
-   * If output folder check `cd ${Edge_Repo}/src/out/${build_type}_x64` fails:
-
+   * If the output folder check `cd ${Edge_Repo}/src/out/${build_type}_x64` fails:
      * Run `autogn` to create it.
-   * Then run:
-
+   * Then run one of the following:
      * `autoninja -C out/${build_type}_x64 chrome` or
-     * `autoninja -C out/${build_type}_x64 mini_installer.exe`.
+     * `autoninja -C out/${build_type}_x64 mini_installer.exe`
 
-4. The `initEdgeEnv` script should be changed to **PowerShell (`initEdgeEnv.ps1`)**, not CMD.
+4. The `initEdgeEnv` script should be changed to **PowerShell** (`initEdgeEnv.ps1`), not CMD.
 
 5. The Agent must **pause and wait** for the user's input when asking for `build_type`. Resume only after the input is received.
 
@@ -113,7 +106,7 @@ The Agent must:
 
 #### 1. Task Understanding & Ambiguity Resolution
 
-Wait and ask for user's input, then based on the Agent's own capabilities, the user input, and any references provided in the "Before you start" section, attempt to interpret the task.
+Wait and ask for the user's input, then based on the Agent's own capabilities, the user input, and any references provided in the "Before you start" section, attempt to interpret the task.
 
 * If multiple possible interpretations of the task exist, list them all for user confirmation.
 * Do not make assumptions or choose on behalf of the user—the user must decide.
@@ -171,7 +164,7 @@ The Agent must demonstrate comprehensive understanding of the codebase, includin
 
 #### 4. Execute
 
-* Execute the generated plan step by step, updating progress in real time.
+* Execute the generated plan step by step, updating progress in real-time.
 * Update the execution plan file in real-time as the plan is executed. 
 
 #### 5. Build and Validation
@@ -179,17 +172,17 @@ The Agent must demonstrate comprehensive understanding of the codebase, includin
 ##### 5.a. Build the project and check for build errors.
 
 ##### 5.b. Attempt to fix all build errors until the build passes.
-* Once validation passes, go to the next step "Commit Changes" and no need for one more build.
+* Once validation passes, go to the next step "Commit Changes" and no additional build is needed.
 
 #### 6. Commit Changes
 
-##### 6.a. Ask the user to confirm if committing changes.
+##### 6.a. Ask the user to confirm whether to commit changes.
 
 ##### 6.b. Once the user confirms:
 
 * Execute `git add -u` to add all tracked changed files.
-* Execute `git commit -m '${commit_description}'` to commit changes with generated commit_description. 
-* Push the changes
+* Execute `git commit -m '${commit_description}'` to commit changes with the generated commit_description.
+* Push the changes.
 
 ---
 
