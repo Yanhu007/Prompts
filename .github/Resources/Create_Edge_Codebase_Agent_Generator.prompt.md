@@ -25,21 +25,21 @@ The Edge Agent Generator Framework is designed to create intelligent agents that
 
 ### Step 2. **Integrate Requirements (Phase 1)**
    - ⚠️ **PREREQUISITE**: Step 1 must be completed successfully
-   - Reference and understand the requirements described in `.github/Resources/Edge_Codebase_Agent_Gen_Requirements_1.md`
+   - Reference and understand the requirements described in `.github/resources/Edge_Codebase_Agent_Gen_Requirements_1.md`
    - Update the Edge Agent Generator Framework prompt in `.github/Prompts/Edge_Codebase_Agent_Generator.prompt.md` with standard markdown format
    
    **✅ Completion Requirement**: All Phase 1 requirements must be fully integrated into the prompt file before proceeding to Step 3.
 
 ### Step 3. **Integrate Requirements (Phase 2)**
    - ⚠️ **PREREQUISITE**: Step 2 must be completed successfully
-   - Reference and understand the requirements described in `.github/Resources/Edge_Codebase_Agent_Gen_Requirements_2.md`
+   - Reference and understand the requirements described in `.github/resources/Edge_Codebase_Agent_Gen_Requirements_2.md`
    - Update the Edge Agent Generator Framework prompt in `.github/Prompts/Edge_Codebase_Agent_Generator.prompt.md` with standard markdown format
    
    **✅ Completion Requirement**: All Phase 2 requirements must be fully integrated into the prompt file before proceeding to Step 4.
 
 ### Step 4. **Validation Process**
    - ⚠️ **PREREQUISITE**: Step 3 must be completed successfully
-   - Copy `.github/Resources/Edge_Codebase_Agent_Gen_Checklist.md` as `.memory/Edge_Codebase_Agent_Gen_Checklist_${YYYYMMDD-HHMMSS}.md`
+   - Copy `.github/resources/Edge_Codebase_Agent_Gen_Checklist.md` as `.memory/Edge_Codebase_Agent_Gen_Checklist_${YYYYMMDD-HHMMSS}.md`
    - Validate the `.github/Prompts/Edge_Codebase_Agent_Generator.prompt.md` against the timestamped checklist
    - Update the checklist file in real-time using format `[✅]` or `[❌]` as the validation is executed
    

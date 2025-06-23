@@ -4,11 +4,12 @@
 
 ### 📘 Learning and Build
 
-- [ ] The generated Agent must learn from `../Resources/edgebuild.md` and master how to build Edge code according to its documented instructions
-- [ ] The generated Agent must learn from the following mandatory documents: `../Resources/terminology.md` - Essential terminology and definitions
-- [ ] The generated Agent must learn from `../instructions/chromium.instructions.md` - Chromium-specific instructions and guidelines
-- [ ] The generated Agent must learn from `../instructions/embedder.instructions.md` - Embedder-related instructions and best practices
-- [ ] The generated Agent must learn from `../instructions/haystack.instructions.md` - haystack-specific instructions and guidelines
+- [ ] The generated Agent must learn from `../resources/edgebuild.md` and master how to build Edge code according to its documented instructions
+- [ ] The generated Agent must learn from the following mandatory documents:
+  - [ ] `../resources/terminology.md` - Essential terminology and definitions
+  - [ ] `../instructions/chromium.instructions.md` - Chromium-specific instructions and guidelines
+  - [ ] `../instructions/embedder.instructions.md` - Embedder-related instructions and best practices
+  - [ ] `../instructions/haystack.instructions.md` - haystack-specific instructions and guidelines
 - [ ] The Agent is not responsible for branch maintenance. All actions should be performed on the current branch only
 - [ ] Explicitly inform the user that branch creation or switching is their responsibility
 - [ ] Remind the user to create or switch to the correct target branch
@@ -29,7 +30,7 @@
 ### 🏗️ Build Process Guidelines
 
 - [ ] After completing code modifications, the Agent must enter the build phase
-- [ ] Use only the commands from `../Resources/edgebuild.md`
+- [ ] Use only the commands from `../resources/edgebuild.md`
 - [ ] Follow the documented procedure exactly. No improvisation or custom command combinations are allowed
 - [ ] Check if the build environment is initialized: Run `git ms format --upstream=origin/main`
 - [ ] If it fails with the message `git: 'ms' is not a git command.`, then the build environment is not initialized
@@ -73,40 +74,73 @@
 
 ##### 2.a. File-Level Understanding
 
-- [ ] Locate all related files, including: Header files (.h), Code files (Frontend, WebUI, C++, Android, iOS), Test files, Documentation files (.md), Configuration files (.xml, .gn, .json)
+- [ ] Locate all related files, including:
+  - [ ] Header files (.h)
+  - [ ] Code files (Frontend, WebUI, C++, Android, iOS)
+  - [ ] Test files
+  - [ ] Documentation files (.md)
+  - [ ] Configuration files (.xml, .gn, .json, DEPS)
 - [ ] Understand the purpose of each file and the dependencies between them
 - [ ] Save the analysis to: `.memory/${agent_name}_${task_name}_file_understanding_${timestamp}.md` (Overwrite if the file already exists)
-- [ ] File search scope must cover: Core feature files, Settings integration, WebUI integration, String resources, Browser integration, Test files, Preferences and sync, Telemetry, Documentation, Build files (.gn, DEPS)
+- [ ] File search scope must cover:
+  - [ ] Core feature files
+  - [ ] Settings integration
+  - [ ] WebUI integration
+  - [ ] String resources
+  - [ ] Browser integration
+  - [ ] Test files
+  - [ ] Preferences and sync
+  - [ ] Telemetry
+  - [ ] Documentation
+  - [ ] Build files (.gn, DEPS)
 
 ##### 2.b. Code-Level Understanding
 
-- [ ] Identify all related elements: Code blocks, Classes, Methods, Variables, Constants
+- [ ] Identify all related elements:
+  - [ ] Code blocks
+  - [ ] Classes
+  - [ ] Methods
+  - [ ] Variables
+  - [ ] Constants
 - [ ] Understand the function and dependencies of each
 - [ ] Save the analysis to: `.memory/${agent_name}_${task_name}_code_understanding_${timestamp}.md` (Overwrite if the file already exists)
 
 #### 3. Execution Planning
 
-- [ ] Based on the task requirements and the comprehensive understanding of the code, draft an execution plan as a checklist, including: Files to delete, Files to modify (with specific details), Files to add
+- [ ] Based on the task requirements and the comprehensive understanding of the code, draft an execution plan as a checklist, including:
+  - [ ] Files to delete
+  - [ ] Files to modify (with specific details)
+  - [ ] Files to add
 - [ ] Save to: `.memory/${agent_name}_${task_name}_execute_plan_${timestamp}.md` (Overwrite if the file already exists)
 
 #### 4. Execute
 
-- [ ] Execute the generated plan step by step, updating progress in real-time
-- [ ] Update the execution plan file in real-time as the plan is executed
+- [ ] Execute the generated plan `.memory/${agent_name}_${task_name}_execute_plan_${timestamp}.md` step by step
+- [ ] Update the execution plan file `.memory/${agent_name}_${task_name}_execute_plan_${timestamp}.md` in real-time as the plan is executed
 
 #### 5. Build and Validation
 
-##### 5.a. Build the project and check for build errors
+##### 5.a. Build the project
+
+- [ ] Check Edge build environment readiness
+- [ ] Run `gclient sync -D` to sync the dependencies
+- [ ] Confirm the build type with the user
+- [ ] Check the output folder readiness
+- [ ] Run build
 
 ##### 5.b. Attempt to fix all build errors until the build passes
-- [ ] Once validation passes, go to the next step "Commit Changes" and no additional build is needed
+
+- [ ] If the build passes, go to the next step "Commit Changes" and no additional build is needed
+- [ ] If the build fails, try to fix and rebuild until the build passes, with a maximum of 5 trials
 
 #### 6. Commit Changes
 
-##### 6.a. Ask the user to confirm whether to commit changes
+##### 6.a. Commit confirmation
 
-##### 6.b. Once the user confirms:
+- [ ] Ask the user to confirm whether to commit changes
+
+##### 6.b. Once the user confirms
 
 - [ ] Execute `git add -u` to add all tracked changed files
-- [ ] Execute `git commit -m '${commit_description}'` to commit changes with the generated commit_description
+- [ ] Execute `git commit -m '${commit_description}'` to commit changes with the generated commit description
 - [ ] Push the changes

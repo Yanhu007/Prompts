@@ -4,7 +4,7 @@ The `edge_agent_generator` framework is updated to follow **three strict steps**
 
 ## ⚠️ CRITICAL COMPLIANCE REQUIREMENT
 
-**ALL capabilities defined in `.github/Resources/Agent_MUST_HAVE_Capability.md` are MANDATORY and NON-NEGOTIABLE:**
+**ALL capabilities defined in `.github/resources/Agent_MUST_HAVE_Capability.md` are MANDATORY and NON-NEGOTIABLE:**
 
 * ❌ **FORBIDDEN**: Ignoring, simplifying, modifying, or omitting any capability requirements
 * ❌ **FORBIDDEN**: Making excuses for not implementing capabilities or treating any capability as "optional"
@@ -39,7 +39,7 @@ The edge_agent_generator framework should follow this enhanced intent analysis p
 
 ### 2.a Deep Intent Analysis
 
-* **Analyze the provided inputs** (Agent name, description, and reference materials) and **Analyze the mandatory documents** in the learning section of `.github/Resources/Agent_MUST_HAVE_Capability.md` to:
+* **Analyze the provided inputs** (Agent name, description, and reference materials) and **Analyze the mandatory documents** in the learning section of `.github/resources/Agent_MUST_HAVE_Capability.md` to:
   * Understand the user's intent
   * Identify the specific Edge/Chromium development area (e.g., feature removal, build processes, code search, etc.)
   * Recognize potential complexity levels and scope considerations
@@ -51,7 +51,7 @@ The edge_agent_generator framework should follow this enhanced intent analysis p
   * **Multiple interpretation scenarios**: If the Agent name or description could have different meanings
   * **Scope uncertainties**: If the intended scope of the Agent's responsibilities is unclear
   * **Technical approach variations**: If there are multiple valid approaches to achieve the stated goal
-  * **Domain-specific terminology**: Apply knowledge from `.github/Resources/terminology.md` to identify terms that may have multiple interpretations (e.g., "remove feature" vs "unship feature" vs "remove feature flag")
+  * **Domain-specific terminology**: Apply knowledge from `.github/resources/terminology.md` to identify terms that may have multiple interpretations (e.g., "remove feature" vs "unship feature" vs "remove feature flag")
 
 ### 2.c Intent Clarification Process
 
@@ -89,23 +89,23 @@ Once the user confirms the intent, the edge_agent_generator framework must proce
 ### 3.a Prepare Capability Validation Checklist
 
 **⚠️ DEPENDENCY CHECK**: Before proceeding, verify that the required files exist:
-* `.github/Resources/Agent_MUST_HAVE_Capability.md` (complete capability specifications - the authoritative source)
-* `.github/Resources/Agent_MUST_HAVE_Capability_Checklist.md` (validation checklist template - auto-generated from main file)
-* `.github/Resources/terminology.md` (Edge development terminology reference)
+* `.github/resources/Agent_MUST_HAVE_Capability.md` (complete capability specifications - the authoritative source)
+* `.github/resources/Agent_MUST_HAVE_Capability_Checklist.md` (validation checklist template - auto-generated from main file)
+* `.github/resources/terminology.md` (Edge development terminology reference)
 
 **📋 FILE RELATIONSHIP DETAILS**: 
-- **Primary Source**: `.github/Resources/Agent_MUST_HAVE_Capability.md` contains the complete, authoritative capability definitions
-- **Derived Checklist**: `.github/Resources/Agent_MUST_HAVE_Capability.md` is automatically generated from the primary source and maintained for consistency
+- **Primary Source**: `.github/resources/Agent_MUST_HAVE_Capability.md` contains the complete, authoritative capability definitions
+- **Derived Checklist**: `.github/resources/Agent_MUST_HAVE_Capability.md` is automatically generated from the primary source and maintained for consistency
 - **Consistency Guarantee**: The checklist file is programmatically synchronized with the main capability file
 - **Update Process**: Any changes to the main file automatically trigger checklist regeneration
 
 **🚫 ERROR HANDLING**: If any dependency file is missing:
 * **Notify the user** that required dependency files are not found
 * **List the missing files** specifically
-* **Provide download guidance**: If `.github/Resources/Agent_MUST_HAVE_Capability.md` is missing, instruct user to download from: `https://github.com/Yanhu007/Prompts/blob/main/.github/Resources/Agent_MUST_HAVE_Capability_Checklist.md`
+* **Provide download guidance**: If `.github/resources/Agent_MUST_HAVE_Capability.md` is missing, instruct user to download from: `https://github.com/Yanhu007/Prompts/blob/main/.github/resources/Agent_MUST_HAVE_Capability_Checklist.md`
 * **Stop the process** immediately and do not proceed until all required files are available
 
-* **Copy and initialize** the pre-generated checklist `.github/Resources/Agent_MUST_HAVE_Capability_Checklist.md` to:
+* **Copy and initialize** the pre-generated checklist `.github/resources/Agent_MUST_HAVE_Capability_Checklist.md` to:
 
   ```
   ./memory/Agent_MUST_HAVE_Capability_Checklist_${YYYYMMDD-HHMMSS}.md
@@ -116,18 +116,18 @@ Once the user confirms the intent, the edge_agent_generator framework must proce
   - **Timezone**: Local system timezone, no timezone suffix included
   - **Precision**: Seconds level to ensure uniqueness
 
-* This timestamped checklist serves as a **validation tracking tool** to systematically verify that the generated Agent meets **ALL MANDATORY requirements from the original `.github/Resources/Agent_MUST_HAVE_Capability.md`** WITHOUT EXCEPTION
-* **Important**: The edge_agent_generator framework generates the Agent based on the **complete original file** (`.github/Resources/Agent_MUST_HAVE_Capability.md`), while using the timestamped checklist file to track validation progress and ensure all capabilities have been properly implemented
+* This timestamped checklist serves as a **validation tracking tool** to systematically verify that the generated Agent meets **ALL MANDATORY requirements from the original `.github/resources/Agent_MUST_HAVE_Capability.md`** WITHOUT EXCEPTION
+* **Important**: The edge_agent_generator framework generates the Agent based on the **complete original file** (`.github/resources/Agent_MUST_HAVE_Capability.md`), while using the timestamped checklist file to track validation progress and ensure all capabilities have been properly implemented
 * **Validation Tracking**: The checklist will be automatically updated during validation:
   * Format: `[✅] CAPABILITY_NAME` for verified capabilities
   * Format: `[❌] CAPABILITY_NAME` for missing/incomplete capabilities
-  * **Verification Standard**: Each checklist item corresponds to a specific capability in `.github/Resources/Agent_MUST_HAVE_Capability.md`. Verification passes when the Agent implements functionality that is literally identical to the specified capability
+  * **Verification Standard**: Each checklist item corresponds to a specific capability in `.github/resources/Agent_MUST_HAVE_Capability.md`. Verification passes when the Agent implements functionality that is literally identical to the specified capability
 
 ### 3.b Generate Agent Prompt
 
 * **Consolidate the following components**:
   * The user-provided domain knowledge
-  * **🔒 MANDATORY**: The complete content in `.github/Resources/Agent_MUST_HAVE_Capability.md` - every capability MUST be implemented exactly as specified
+  * **🔒 MANDATORY**: The complete content in `.github/resources/Agent_MUST_HAVE_Capability.md` - every capability MUST be implemented exactly as specified
   * The constraints and abilities required by the edge_agent_generator framework
 
 * **🚫 COMPLIANCE REQUIREMENT**: Generate the Agent prompt to include ALL capabilities from the original specification with ZERO modifications
@@ -151,7 +151,7 @@ Once the user confirms the intent, the edge_agent_generator framework must proce
     ```
 
   * **For each checklist item**:
-    * **🔍 VERIFICATION**: Check if the current Agent prompt satisfies the requirement EXACTLY as specified in the original `.github/Resources/Agent_MUST_HAVE_Capability.md`
+    * **🔍 VERIFICATION**: Check if the current Agent prompt satisfies the requirement EXACTLY as specified in the original `.github/resources/Agent_MUST_HAVE_Capability.md`
     * **✅ VERIFICATION STANDARD**: Apply the following validation criteria in hierarchical order:
       1. **Literal inclusion**: The exact text from the capability specification is present in the Agent prompt
       2. **Functional equivalence**: If literal inclusion is not applicable, verify that the Agent prompt implements the same functionality through different but equivalent wording
@@ -187,13 +187,13 @@ Once the user confirms the intent, the edge_agent_generator framework must proce
 
 Before any Agent is considered complete, the framework MUST verify:
 
-1. **📋 100% Capability Coverage**: Every single capability from `.github/Resources/Agent_MUST_HAVE_Capability.md` is implemented exactly as specified
+1. **📋 100% Capability Coverage**: Every single capability from `.github/resources/Agent_MUST_HAVE_Capability.md` is implemented exactly as specified
 2. **🚫 Zero Modifications**: No capability has been simplified, altered, or omitted  
 
 ### Final Outcome
 
 **An Agent is only considered successfully generated when it achieves:**
-* ✅ **Perfect Compliance**: 100% adherence to `.github/Resources/Agent_MUST_HAVE_Capability.md`
+* ✅ **Perfect Compliance**: 100% adherence to `.github/resources/Agent_MUST_HAVE_Capability.md`
 * ✅ **Complete Implementation**: Every capability is fully implemented and functional
 * ✅ **Exact Specifications**: All capabilities match the checklist requirements precisely
 

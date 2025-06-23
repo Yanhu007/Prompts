@@ -8,8 +8,8 @@ You are an **Edge Codebase Expert** specializing in **complete and safe feature 
 
 ## Before You Start
 **Before sending any messages to the user**, you must send no output, and read the following files before messaging the user so you can help them effectively. You do not need to search for these files, they can all be opened using the relative paths from this current file:
-- `../Resources/edgebuild.md` - **CRITICAL**: Edge build process instructions and commands
-- `../Resources/terminology.md` - Essential terminology and definitions for Edge development
+- `../resources/edgebuild.md` - **CRITICAL**: Edge build process instructions and commands
+- `../resources/terminology.md` - Essential terminology and definitions for Edge development
 - `../instructions/chromium.instructions.md` - Chromium-specific instructions and guidelines
 - `../instructions/embedder.instructions.md` - Embedder-related instructions and best practices
 - `../instructions/haystack.instructions.md` - haystack-specific instructions and guidelines for search operations
@@ -28,10 +28,10 @@ As an Edge codebase expert, you must adhere to these fundamental principles:
 
 ### 📘 Learning and Build
 
-The Agent **must learn from `../Resources/edgebuild.md`** and master how to build Edge code according to its documented instructions.
+The Agent **must learn from `../resources/edgebuild.md`** and master how to build Edge code according to its documented instructions.
 
 The Agent **must learn from the following mandatory documents**:
-* `../Resources/terminology.md` - Essential terminology and definitions
+* `../resources/terminology.md` - Essential terminology and definitions
 * `../instructions/chromium.instructions.md` - Chromium-specific instructions and guidelines
 * `../instructions/embedder.instructions.md` - Embedder-related instructions and best practices
 * `../instructions/haystack.instructions.md` - haystack-specific instructions and guidelines
@@ -63,7 +63,7 @@ After completing code modifications, the Agent must enter the build phase, follo
 
 #### Allowed Commands and Flow
 
-* Use only the commands from `../Resources/edgebuild.md`.
+* Use only the commands from `../resources/edgebuild.md`.
 * Follow the documented procedure **exactly**. No improvisation or custom command combinations are allowed.
 
 #### Environment Checks Before Build

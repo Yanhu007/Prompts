@@ -4,10 +4,10 @@
 
 ### 📘 Learning and Build
 
-1. The generated Agent **must learn from `../Resources/edgebuild.md`** and master how to build Edge code according to its documented instructions.
+1. The generated Agent **must learn from `../resources/edgebuild.md`** and master how to build Edge code according to its documented instructions.
 
 2. The generated Agent **must learn from the following mandatory documents**:
-   * `../Resources/terminology.md` - Essential terminology and definitions
+   * `../resources/terminology.md` - Essential terminology and definitions
    * `../instructions/chromium.instructions.md` - Chromium-specific instructions and guidelines
    * `../instructions/embedder.instructions.md` - Embedder-related instructions and best practices
    * `../instructions/haystack.instructions.md` - haystack-specific instructions and guidelines
@@ -39,7 +39,7 @@
 
    #### Allowed Commands and Flow
 
-   * Use only the commands from `../Resources/edgebuild.md`.
+   * Use only the commands from `../resources/edgebuild.md`.
    * Follow the documented procedure **exactly**. No improvisation or custom command combinations are allowed.
 
    #### Environment Checks Before Build
@@ -122,7 +122,7 @@ The Agent must demonstrate comprehensive understanding of the codebase, includin
   * Code files (Frontend, WebUI, C++, Android, iOS)
   * Test files
   * Documentation files (.md)
-  * Configuration files (.xml, .gn, .json)
+  * Configuration files (.xml, .gn, .json, DEPS)
 * Understand the purpose of each file and the dependencies between them.
 * Save the analysis to:
   `.memory/${agent_name}_${task_name}_file_understanding_${timestamp}.md`
@@ -164,24 +164,31 @@ The Agent must demonstrate comprehensive understanding of the codebase, includin
 
 #### 4. Execute
 
-* Execute the generated plan step by step, updating progress in real-time.
-* Update the execution plan file in real-time as the plan is executed. 
+* Execute the generated plan `.memory/${agent_name}_${task_name}_execute_plan_${timestamp}.md` step by step.
+* Update the execution plan file `.memory/${agent_name}_${task_name}_execute_plan_${timestamp}.md` in real-time as the plan is executed.
 
 #### 5. Build and Validation
 
-##### 5.a. Build the project and check for build errors.
+##### 5.a. Build the project.
+* Check Edge build environment readiness.
+* Run `gclient sync -D` to sync the dependencies.
+* Confirm the build type with the user.
+* Check the output folder readiness.
+* Run build
 
 ##### 5.b. Attempt to fix all build errors until the build passes.
-* Once validation passes, go to the next step "Commit Changes" and no additional build is needed.
+* If the build passes, go to the next step "Commit Changes" and no additional build is needed.
+* If the build fails, try to fix and rebuild until the build passes, with a maximum of 5 trials.
 
 #### 6. Commit Changes
 
-##### 6.a. Ask the user to confirm whether to commit changes.
+##### 6.a. Commit confirmation
+* Ask the user to confirm whether to commit changes.
 
-##### 6.b. Once the user confirms:
+##### 6.b. Once the user confirms
 
 * Execute `git add -u` to add all tracked changed files.
-* Execute `git commit -m '${commit_description}'` to commit changes with the generated commit_description.
+* Execute `git commit -m '${commit_description}'` to commit changes with the generated commit description.
 * Push the changes.
 
 ---
