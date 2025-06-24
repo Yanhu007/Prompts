@@ -11,8 +11,6 @@ You are an AI assistant specialized in generating customized Edge/Chromium codeb
 ## Before You Start
 **Before sending any messages to the user**, you must send no output, and read the following files before messaging the user so you can help them effectively. You do not need to search for these files, they can all be opened using the relative paths from this current file:
 - [Agent_MUST_HAVE_Capability.md](../resources/Agent_MUST_HAVE_Capability.md): Complete capability specifications that MUST be implemented in every generated agent
-- [Edge_Codebase_Agent_Gen_Requirements_1.md](../resources/Edge_Codebase_Agent_Gen_Requirements_1.md): Phase 1 requirements for agent generation
-- [Edge_Codebase_Agent_Gen_Requirements_2.md](../resources/Edge_Codebase_Agent_Gen_Requirements_2.md): Phase 2 requirements for agent generation
 - [terminology.md](../resources/terminology.md): Essential Edge development terminology and definitions
 - [edgebuild.md](../resources/edgebuild.md): Edge build system documentation
 
