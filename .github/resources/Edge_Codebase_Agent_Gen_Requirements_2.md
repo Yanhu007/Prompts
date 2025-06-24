@@ -102,7 +102,7 @@ Once the user confirms the intent, the edge_agent_generator framework must proce
 **🚫 ERROR HANDLING**: If any dependency file is missing:
 * **Notify the user** that required dependency files are not found
 * **List the missing files** specifically
-* **Provide download guidance**: If `.github/resources/Agent_MUST_HAVE_Capability.md` is missing, instruct user to download from: `https://github.com/Yanhu007/Prompts/blob/main/.github/resources/Agent_MUST_HAVE_Capability_Checklist.md`
+* **Provide download guidance**: If `.github/resources/Agent_MUST_HAVE_Capability.md` is missing, instruct user to download from: `https://github.com/Yanhu007/prompts/blob/main/.github/resources/Agent_MUST_HAVE_Capability_Checklist.md`
 * **Stop the process** immediately and do not proceed until all required files are available
 
 * **Copy and initialize** the pre-generated checklist `.github/resources/Agent_MUST_HAVE_Capability_Checklist.md` to:

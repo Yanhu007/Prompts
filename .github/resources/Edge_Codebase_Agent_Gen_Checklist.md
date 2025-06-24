@@ -3,7 +3,7 @@
 ## Background and Scope Requirements
 
 ### Framework Purpose
-- [ ] The `edge_agent_generator` framework should generate a new prompt file based on user input and save it to the `.github/Prompts` directory
+- [ ] The `edge_agent_generator` framework should generate a new prompt file based on user input and save it to the `.github/prompts` directory
 - [ ] The generated prompt should be customized according to the information provided by the user while following best practices for Edge code modification and maintaining full compliance with mandatory capability requirements
 
 ## Agent Professional Capabilities Requirements
@@ -30,7 +30,7 @@
 
 ### File Generation Standards
 - [ ] The `edge_agent_generator` framework should generate a markdown file containing the agent's prompt
-- [ ] Save path: `.github/Prompts` directory
+- [ ] Save path: `.github/prompts` directory
 - [ ] Filename format: `${Agent Name}_agent.prompt.md`
 - [ ] Content format should be unified and standardized, conforming to the style and structure used for GPT agent initialization
 
@@ -145,7 +145,7 @@
 - [ ] **🚫 ERROR HANDLING**: If any dependency file is missing:
   - **Notify the user** that required dependency files are not found
   - **List the missing files** specifically
-  - **Provide download guidance**: If `.github/resources/Agent_MUST_HAVE_Capability.md` is missing, instruct user to download from: `https://github.com/Yanhu007/Prompts/blob/main/.github/resources/Agent_MUST_HAVE_Capability_Checklist.md`
+  - **Provide download guidance**: If `.github/resources/Agent_MUST_HAVE_Capability.md` is missing, instruct user to download from: `https://github.com/Yanhu007/prompts/blob/main/.github/resources/Agent_MUST_HAVE_Capability_Checklist.md`
   - **Stop the process** immediately and do not proceed until all required files are available
 
 #### Checklist Initialization

@@ -6,7 +6,7 @@ We need to build an `edge_agent_generator` framework for automatically generatin
 
 ## Scope
 
-This `edge_agent_generator` framework should generate a new prompt file based on user input and save it to the `.github/Prompts` directory. The generated prompt should be customized according to the information provided by the user while following best practices for Edge code modification and maintaining full compliance with mandatory capability requirements.
+This `edge_agent_generator` framework should generate a new prompt file based on user input and save it to the `.github/prompts` directory. The generated prompt should be customized according to the information provided by the user while following best practices for Edge code modification and maintaining full compliance with mandatory capability requirements.
 
 ## Requirements
 
@@ -35,7 +35,7 @@ The `edge_agent_generator` framework should accept the following user inputs wit
 
 - The `edge_agent_generator` framework should generate a markdown file containing the agent's prompt;
 - The generated file must meet the following requirements:
-  - Save path: `.github/Prompts` directory;
+  - Save path: `.github/prompts` directory;
   - Filename format: `${Agent Name}_agent.prompt.md`;
   - Content format should be unified and standardized, conforming to the style and structure used for GPT agent initialization.
 
