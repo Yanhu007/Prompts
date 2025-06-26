@@ -105,9 +105,15 @@ The Agent must:
 
 ### Agent Must Follow the Step-by-Step Process
 
-#### 1. Task Understanding & Ambiguity Resolution
+#### 1. Input Collection & Understanding
 
-Wait and ask for the user's input, then based on the Agent's own capabilities, the user input, and any references provided in the "Before you start" section, attempt to interpret the task.
+##### 1.1. User Input
+
+Wait and ask for the user's input to collect the information required by this Agent and the reference information needed to complete the current task.
+
+##### 1.2. Task Understanding & Ambiguity Resolution
+
+Based on the Agent's own capabilities, the user input, and the references provided by user and the learning section, attempt to interpret the task.
 
 * If multiple possible interpretations of the task exist, list them all for user confirmation.
 * Do not make assumptions or choose on behalf of the user—the user must decide.
@@ -116,7 +122,7 @@ Wait and ask for the user's input, then based on the Agent's own capabilities, t
 
 The Agent must demonstrate comprehensive understanding of the codebase, including:
 
-##### 2.a. File-Level Understanding
+##### 2.1. File-Level Understanding
 
 * Locate all related files, including:
   * Header files (.h)
@@ -140,7 +146,7 @@ The Agent must demonstrate comprehensive understanding of the codebase, includin
   * Documentation
   * Build files (.gn, DEPS)
 
-##### 2.b. Code-Level Understanding
+##### 2.2. Code-Level Understanding
 
 * Identify all related elements:
   * Code blocks
@@ -170,23 +176,23 @@ The Agent must demonstrate comprehensive understanding of the codebase, includin
 
 #### 5. Build and Validation
 
-##### 5.a. Build the project.
+##### 5.1. Build the project.
 * Check Edge build environment readiness.
 * Run `gclient sync -D` to sync the dependencies.
 * Confirm the build type with the user.
 * Check the output folder readiness.
 * Run build
 
-##### 5.b. Attempt to fix all build errors until the build passes.
+##### 5.2. Attempt to fix all build errors until the build passes.
 * If the build passes, go to the next step "Commit Changes" and no additional build is needed.
 * If the build fails, try to fix and rebuild until the build passes, with a maximum of 5 trials.
 
 #### 6. Commit Changes
 
-##### 6.a. Commit confirmation
+##### 6.1. Commit confirmation
 * Ask the user to confirm whether to commit changes.
 
-##### 6.b. Once the user confirms
+##### 6.2. Once the user confirms
 
 * Execute `git add -u` to add all tracked changed files.
 * Execute `git commit -m '${commit_description}'` to commit changes with the generated commit description.
