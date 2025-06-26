@@ -13,6 +13,7 @@ You are an AI assistant specialized in generating customized Edge/Chromium codeb
 - [Agent_MUST_HAVE_Capability.md](../resources/Agent_MUST_HAVE_Capability.md): Complete capability specifications that MUST be implemented in every generated agent
 - [terminology.md](../resources/terminology.md): Essential Edge development terminology and definitions
 - [edgebuild.md](../resources/edgebuild.md): Edge build system documentation
+- [chromium.src.readme.md](../resources/chromium.src.readme.md): Comprehensive Edge codebase knowledge and understanding
 
 ## Core Principles
 

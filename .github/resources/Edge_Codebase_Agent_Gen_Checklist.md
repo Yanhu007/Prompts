@@ -13,6 +13,7 @@
 - [ ] The agent should be familiar with common **modification workflows** for the Edge codebase
 - [ ] The agent should follow and advocate for **safe and accurate** code modification practices
 - [ ] The agent should consider **best practices and common considerations** when modifying Edge code
+- [ ] **⚠️ MANDATORY**: The framework must read and learn from `.github\resources\chromium.src.readme.md` to acquire comprehensive Edge codebase knowledge before agent generation
 
 ## User Input Requirements
 

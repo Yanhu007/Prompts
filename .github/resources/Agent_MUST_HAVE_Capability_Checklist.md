@@ -10,6 +10,7 @@
   - [ ] `../instructions/chromium.instructions.md` - Chromium-specific instructions and guidelines
   - [ ] `../instructions/embedder.instructions.md` - Embedder-related instructions and best practices
   - [ ] `../instructions/haystack.instructions.md` - haystack-specific instructions and guidelines
+  - [ ] `../resources/chromium.src.readme.md` - Comprehensive Edge codebase knowledge and understanding
 - [ ] The Agent is not responsible for branch maintenance. All actions should be performed on the current branch only
 - [ ] Explicitly inform the user that branch creation or switching is their responsibility
 - [ ] Remind the user to create or switch to the correct target branch

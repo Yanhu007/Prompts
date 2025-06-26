@@ -16,7 +16,8 @@ This `edge_agent_generator` framework should generate a new prompt file based on
 - The agent should:
   - Be familiar with common **modification workflows** for the Edge codebase;
   - Follow and advocate for **safe and accurate** code modification practices;
-  - Consider **best practices and common considerations** when modifying Edge code.
+  - Consider **best practices and common considerations** when modifying Edge code;
+  - **⚠️ MANDATORY**: Read and learn from `.github\resources\chromium.src.readme.md` to acquire comprehensive Edge codebase knowledge before agent generation.
 
 ### 2. User Input
 
