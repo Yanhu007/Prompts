@@ -50,6 +50,35 @@
             text-align: center;
         }
 
+        .language-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .lang-btn {
+            padding: 8px 20px;
+            border: 2px solid #007AFF;
+            background: transparent;
+            color: #007AFF;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background: rgba(0, 122, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .lang-btn.active {
+            background: #007AFF;
+            color: white;
+        }
+
         .header-meta {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -302,6 +331,15 @@
                 grid-template-columns: 1fr;
             }
             
+            .language-switcher {
+                margin: 15px 0;
+            }
+            
+            .lang-btn {
+                padding: 6px 16px;
+                font-size: 0.8rem;
+            }
+            
             .navigation {
                 display: none;
             }
@@ -379,10 +417,11 @@
     </div>
 
     <a href="https://github.com/Yanhu007/Prompts" class="github-link" target="_blank">
-        📂 GitHub Repository
+        <span class="lang-content" data-lang="en">📂 GitHub Repository</span>
+        <span class="lang-content" data-lang="zh" style="display: none;">📂 GitHub Repository</span>
     </a>
 
-    <button class="back-to-top" id="backToTop" title="返回顶部">
+    <button class="back-to-top" id="backToTop" title="">
         ↑
     </button>
 
@@ -400,22 +439,41 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>Chromium Weekly Changes Report</h1>
+            <h1>
+                <span class="lang-content" data-lang="en">Chromium Weekly Changes Report</span>
+                <span class="lang-content" data-lang="zh" style="display: none;">Chromium 周度变更报告</span>
+            </h1>
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="en">English</button>
+                <button class="lang-btn" data-lang="zh">中文</button>
+            </div>
             <div class="header-meta">
                 <div class="meta-item">
-                    <div class="meta-label">分析周期</div>
+                    <div class="meta-label">
+                        <span class="lang-content" data-lang="en">Analysis Period</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;">分析周期</span>
+                    </div>
                     <div class="meta-value">June 20 - 27, 2025</div>
                 </div>
                 <div class="meta-item">
-                    <div class="meta-label">生成时间</div>
+                    <div class="meta-label">
+                        <span class="lang-content" data-lang="en">Generated Time</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;">生成时间</span>
+                    </div>
                     <div class="meta-value">June 27, 2025</div>
                 </div>
                 <div class="meta-item">
-                    <div class="meta-label">代码仓库</div>
+                    <div class="meta-label">
+                        <span class="lang-content" data-lang="en">Repository</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;">代码仓库</span>
+                    </div>
                     <div class="meta-value">chromium/main</div>
                 </div>
                 <div class="meta-item">
-                    <div class="meta-label">最新提交</div>
+                    <div class="meta-label">
+                        <span class="lang-content" data-lang="en">Latest Commit</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;">最新提交</span>
+                    </div>
                     <div class="meta-value">bf46b049</div>
                 </div>
             </div>
@@ -423,73 +481,120 @@
 
         <!-- Executive Summary -->
         <div class="section" id="summary">
-            <h2 class="section-title">📊 执行摘要</h2>
+            <h2 class="section-title">
+                <span class="lang-content" data-lang="en">📊 Executive Summary</span>
+                <span class="lang-content" data-lang="zh" style="display: none;">📊 执行摘要</span>
+            </h2>
             <div class="highlight-box">
-                <p><strong>本报告提供了2025年6月20-27日Chromium开发活动的全面分析。</strong> 分析涵盖了来自33位活跃贡献者的500次提交，显示出Chromium代码库多个组件的持续稳健发展。</p>
+                <p class="lang-content" data-lang="en"><strong>This report provides a comprehensive analysis of Chromium development activities from June 20-27, 2025.</strong> The analysis covers 500 commits from 33 active contributors, demonstrating continuous robust development across multiple components of the Chromium codebase.</p>
+                <p class="lang-content" data-lang="zh" style="display: none;"><strong>本报告提供了2025年6月20-27日Chromium开发活动的全面分析。</strong> 分析涵盖了来自33位活跃贡献者的500次提交，显示出Chromium代码库多个组件的持续稳健发展。</p>
             </div>
             
             <div class="key-metrics">
                 <div class="metric-card">
                     <div class="metric-number">500</div>
-                    <div class="metric-label">分析的提交总数</div>
+                    <div class="metric-label">
+                        <span class="lang-content" data-lang="en">Total Analyzed Commits</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;">分析的提交总数</span>
+                    </div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-number">33</div>
-                    <div class="metric-label">活跃贡献者</div>
+                    <div class="metric-label">
+                        <span class="lang-content" data-lang="en">Active Contributors</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;">活跃贡献者</span>
+                    </div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-number">+276</div>
-                    <div class="metric-label">净代码增长行数</div>
+                    <div class="metric-label">
+                        <span class="lang-content" data-lang="en">Net Code Growth Lines</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;">净代码增长行数</span>
+                    </div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-number">50</div>
-                    <div class="metric-label">详细分析的提交</div>
+                    <div class="metric-label">
+                        <span class="lang-content" data-lang="en">Detailed Analysis Commits</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;">详细分析的提交</span>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Development Activity -->
         <div class="section" id="activity">
-            <h2 class="section-title">🚀 开发活动概览</h2>
+            <h2 class="section-title">
+                <span class="lang-content" data-lang="en">🚀 Development Activity</span>
+                <span class="lang-content" data-lang="zh" style="display: none;">🚀 开发活动概览</span>
+            </h2>
             
             <div class="insight-box">
-                <h3>🔍 关键洞察</h3>
-                <p>本周显示出持续的开发活动，自动化依赖管理占据了很大比例的提交。chromium-autoroll系统贡献了11次提交（占顶级贡献者活动的22%），表明对外部依赖的积极维护。</p>
+                <h3 class="lang-content" data-lang="en">🔍 Key Insights</h3>
+                <h3 class="lang-content" data-lang="zh" style="display: none;">🔍 关键洞察</h3>
+                <p class="lang-content" data-lang="en">This week shows sustained development activity with automated dependency management accounting for a significant portion of commits. The chromium-autoroll system contributed 11 commits (22% of top contributor activity), indicating active maintenance of external dependencies.</p>
+                <p class="lang-content" data-lang="zh" style="display: none;">本周显示出持续的开发活动，自动化依赖管理占据了很大比例的提交。chromium-autoroll系统贡献了11次提交（占顶级贡献者活动的22%），表明对外部依赖的积极维护。</p>
             </div>
 
-            <h3>代码变更分析</h3>
+            <h3 class="lang-content" data-lang="en">Code Changes Analysis</h3>
+            <h3 class="lang-content" data-lang="zh" style="display: none;">代码变更分析</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
                 <div style="text-align: center; padding: 15px; background: rgba(52, 199, 89, 0.1); border-radius: 12px;">
                     <div style="font-size: 1.5rem; font-weight: 700; color: #34c759;">+739</div>
-                    <div style="color: #666;">新增行数</div>
+                    <div style="color: #666;">
+                        <span class="lang-content" data-lang="en">Lines Added</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;">新增行数</span>
+                    </div>
                 </div>
                 <div style="text-align: center; padding: 15px; background: rgba(255, 59, 48, 0.1); border-radius: 12px;">
                     <div style="font-size: 1.5rem; font-weight: 700; color: #ff3b30;">-463</div>
-                    <div style="color: #666;">删除行数</div>
+                    <div style="color: #666;">
+                        <span class="lang-content" data-lang="en">Lines Deleted</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;">删除行数</span>
+                    </div>
                 </div>
                 <div style="text-align: center; padding: 15px; background: rgba(0, 122, 255, 0.1); border-radius: 12px;">
                     <div style="font-size: 1.5rem; font-weight: 700; color: #007AFF;">1.6:1</div>
-                    <div style="color: #666;">增删比例</div>
+                    <div style="color: #666;">
+                        <span class="lang-content" data-lang="en">Add/Delete Ratio</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;">增删比例</span>
+                    </div>
                 </div>
             </div>
 
             <div class="highlight-box">
-                <p><strong>💡 重要发现：</strong> 正向的净增长表明功能开发和扩展，而不仅仅是维护或重构。</p>
+                <p class="lang-content" data-lang="en"><strong>💡 Key Finding:</strong> Positive net growth indicates feature development and expansion, not just maintenance or refactoring.</p>
+                <p class="lang-content" data-lang="zh" style="display: none;"><strong>💡 重要发现：</strong> 正向的净增长表明功能开发和扩展，而不仅仅是维护或重构。</p>
             </div>
         </div>
 
         <!-- Contributors -->
         <div class="section" id="contributors">
-            <h2 class="section-title">👥 贡献者分析</h2>
+            <h2 class="section-title">
+                <span class="lang-content" data-lang="en">👥 Contributors Analysis</span>
+                <span class="lang-content" data-lang="zh" style="display: none;">👥 贡献者分析</span>
+            </h2>
             
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
-                            <th>排名</th>
-                            <th>开发者</th>
-                            <th>提交数</th>
-                            <th>贡献类型</th>
+                            <th>
+                                <span class="lang-content" data-lang="en">Rank</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">排名</span>
+                            </th>
+                            <th>
+                                <span class="lang-content" data-lang="en">Developer</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">开发者</span>
+                            </th>
+                            <th>
+                                <span class="lang-content" data-lang="en">Commits</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">提交数</span>
+                            </th>
+                            <th>
+                                <span class="lang-content" data-lang="en">Contribution Type</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">贡献类型</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -497,179 +602,267 @@
                             <td>1</td>
                             <td class="commit-author">chromium-autoroll</td>
                             <td>11</td>
-                            <td>自动化依赖更新</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Automated Dependency Updates</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">自动化依赖更新</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td class="commit-author">Christoph Schwering</td>
                             <td>3</td>
-                            <td>主动开发</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Active Development</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">主动开发</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>3</td>
                             <td class="commit-author">chromium-internal-autoroll</td>
                             <td>2</td>
-                            <td>内部自动更新</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Internal Auto Updates</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">内部自动更新</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>4</td>
                             <td class="commit-author">Rune Lillesveen</td>
                             <td>2</td>
-                            <td>测试和导航</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Testing and Navigation</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">测试和导航</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>5</td>
                             <td class="commit-author">Timofey Chudakov</td>
                             <td>2</td>
-                            <td>主动开发</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Active Development</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">主动开发</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>6</td>
                             <td class="commit-author">Asami Doi</td>
                             <td>2</td>
-                            <td>主动开发</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Active Development</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">主动开发</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>7</td>
                             <td class="commit-author">Tomek Jurkiewicz</td>
                             <td>2</td>
-                            <td>主动开发</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Active Development</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">主动开发</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>8</td>
                             <td class="commit-author">Olga Sharonova</td>
                             <td>1</td>
-                            <td>音频测试修复</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Audio Testing Fix</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">音频测试修复</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>9</td>
                             <td class="commit-author">Jood</td>
                             <td>1</td>
-                            <td>iOS平台开发</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">iOS Platform Development</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">iOS平台开发</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>10</td>
                             <td class="commit-author">Tove Petersson</td>
                             <td>1</td>
-                            <td>功能标志管理</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Feature Flag Management</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">功能标志管理</span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="insight-box">
-                <h3>📈 开发模式分析</h3>
+                <h3 class="lang-content" data-lang="en">📈 Development Pattern Analysis</h3>
+                <h3 class="lang-content" data-lang="zh" style="display: none;">📈 开发模式分析</h3>
                 <div style="margin: 15px 0;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin: 10px 0;">
-                        <span>自动化贡献: 39%</span>
+                        <span class="lang-content" data-lang="en">Automated Contributions: 39%</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;">自动化贡献: 39%</span>
                         <div class="percentage-bar" style="width: 200px;">
                             <div class="percentage-fill" style="width: 39%;"></div>
                         </div>
                     </div>
                     <div style="display: flex; justify-content: space-between; align-items: center; margin: 10px 0;">
-                        <span>人工贡献: 61%</span>
+                        <span class="lang-content" data-lang="en">Manual Contributions: 61%</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;">人工贡献: 61%</span>
                         <div class="percentage-bar" style="width: 200px;">
                             <div class="percentage-fill" style="width: 61%;"></div>
                         </div>
                     </div>
                 </div>
-                <p><strong>平台专家：</strong> 强大的iOS和跨平台开发活动</p>
+                <p class="lang-content" data-lang="en"><strong>Platform Experts:</strong> Strong iOS and cross-platform development activity</p>
+                <p class="lang-content" data-lang="zh" style="display: none;"><strong>平台专家：</strong> 强大的iOS和跨平台开发活动</p>
             </div>
         </div>
 
         <!-- Components -->
         <div class="section" id="components">
-            <h2 class="section-title">🏗️ 组件分析</h2>
+            <h2 class="section-title">
+                <span class="lang-content" data-lang="en">🏗️ Components Analysis</span>
+                <span class="lang-content" data-lang="zh" style="display: none;">🏗️ 组件分析</span>
+            </h2>
             
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
-                            <th>组件</th>
-                            <th>变更数</th>
-                            <th>百分比</th>
-                            <th>重点领域</th>
+                            <th>
+                                <span class="lang-content" data-lang="en">Component</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">组件</span>
+                            </th>
+                            <th>
+                                <span class="lang-content" data-lang="en">Changes</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">变更数</span>
+                            </th>
+                            <th>
+                                <span class="lang-content" data-lang="en">Percentage</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">百分比</span>
+                            </th>
+                            <th>
+                                <span class="lang-content" data-lang="en">Focus Area</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">重点领域</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>根目录</strong></td>
+                            <td>
+                                <strong>
+                                    <span class="lang-content" data-lang="en">Root Directory</span>
+                                    <span class="lang-content" data-lang="zh" style="display: none;">根目录</span>
+                                </strong>
+                            </td>
                             <td>109</td>
                             <td>55.3%</td>
-                            <td>核心基础设施</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Core Infrastructure</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">核心基础设施</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>chrome/</td>
                             <td>15</td>
                             <td>7.6%</td>
-                            <td>浏览器应用</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Browser Application</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">浏览器应用</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>third_party/</td>
                             <td>13</td>
                             <td>6.6%</td>
-                            <td>外部依赖</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">External Dependencies</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">外部依赖</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>build/</td>
                             <td>12</td>
                             <td>6.1%</td>
-                            <td>构建系统</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Build System</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">构建系统</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>DEPS</td>
                             <td>9</td>
                             <td>4.6%</td>
-                            <td>依赖管理</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Dependency Management</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">依赖管理</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>components/</td>
                             <td>7</td>
                             <td>3.6%</td>
-                            <td>共享组件</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Shared Components</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">共享组件</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>ios/</td>
                             <td>5</td>
                             <td>2.5%</td>
-                            <td>iOS平台</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">iOS Platform</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">iOS平台</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>media/</td>
                             <td>5</td>
                             <td>2.5%</td>
-                            <td>媒体处理</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Media Processing</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">媒体处理</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>ash/</td>
                             <td>3</td>
                             <td>1.5%</td>
-                            <td>Chrome OS外壳</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Chrome OS Shell</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">Chrome OS外壳</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>tools/</td>
                             <td>2</td>
                             <td>1.0%</td>
-                            <td>开发工具</td>
+                            <td>
+                                <span class="lang-content" data-lang="en">Development Tools</span>
+                                <span class="lang-content" data-lang="zh" style="display: none;">开发工具</span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="highlight-box">
-                <h3>🔍 组件洞察</h3>
+                <h3 class="lang-content" data-lang="en">🔍 Component Insights</h3>
+                <h3 class="lang-content" data-lang="zh" style="display: none;">🔍 组件洞察</h3>
                 <ul style="list-style: none; padding: 0;">
                     <li style="margin: 10px 0; padding-left: 20px; position: relative;">
                         <span style="position: absolute; left: 0; color: #007AFF; font-weight: bold;">•</span>
-                        <strong>基础设施焦点：</strong> 55%的变更在根目录，表明显著的核心改进
+                        <span class="lang-content" data-lang="en"><strong>Infrastructure Focus:</strong> 55% of changes in root directory indicate significant core improvements</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;"><strong>基础设施焦点：</strong> 55%的变更在根目录，表明显著的核心改进</span>
                     </li>
                     <li style="margin: 10px 0; padding-left: 20px; position: relative;">
                         <span style="position: absolute; left: 0; color: #007AFF; font-weight: bold;">•</span>
-                        <strong>跨平台开发：</strong> iOS（2.5%）和Chrome OS（1.5%）的活跃工作
+                        <span class="lang-content" data-lang="en"><strong>Cross-Platform Development:</strong> Active work on iOS (2.5%) and Chrome OS (1.5%)</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;"><strong>跨平台开发：</strong> iOS（2.5%）和Chrome OS（1.5%）的活跃工作</span>
                     </li>
                     <li style="margin: 10px 0; padding-left: 20px; position: relative;">
                         <span style="position: absolute; left: 0; color: #007AFF; font-weight: bold;">•</span>
-                        <strong>依赖管理：</strong> 11.2%的变更与外部依赖和构建系统相关
+                        <span class="lang-content" data-lang="en"><strong>Dependency Management:</strong> 11.2% of changes related to external dependencies and build systems</span>
+                        <span class="lang-content" data-lang="zh" style="display: none;"><strong>依赖管理：</strong> 11.2%的变更与外部依赖和构建系统相关</span>
                     </li>
                 </ul>
             </div>
@@ -677,130 +870,179 @@
 
         <!-- Notable Commits -->
         <div class="section" id="commits">
-            <h2 class="section-title">🎯 重要提交和开发</h2>
+            <h2 class="section-title">
+                <span class="lang-content" data-lang="en">🎯 Notable Commits and Developments</span>
+                <span class="lang-content" data-lang="zh" style="display: none;">🎯 重要提交和开发</span>
+            </h2>
             
-            <h3>主要修复和改进</h3>
-            
-            <div class="commit-item">
-                <h4>🔊 音频系统增强</h4>
-                <p><strong>提交：</strong> <span class="commit-hash">bf46b049</span> by <span class="commit-author">Olga Sharonova</span></p>
-                <p><strong>焦点：</strong> 修复ProcessedLocalAudioSource的VerifyAudioFlow测试</p>
-                <p><strong>影响：</strong> 改进音频处理测试可靠性</p>
-            </div>
-
-            <div class="commit-item">
-                <h4>📱 iOS平台开发</h4>
-                <p><strong>提交：</strong> <span class="commit-hash">2366b847</span> by <span class="commit-author">Jood</span></p>
-                <p><strong>焦点：</strong> 重构AccountProfileMapper AssignIdentityToProfile</p>
-                <p><strong>影响：</strong> 增强iOS账户管理架构</p>
-            </div>
-
-            <div class="commit-item">
-                <h4>🧭 导航系统更新</h4>
-                <p><strong>提交：</strong> <span class="commit-hash">a093af3f</span> by <span class="commit-author">Rune Lillesveen</span></p>
-                <p><strong>焦点：</strong> 将软导航测试标记为不稳定</p>
-                <p><strong>影响：</strong> 改进测试稳定性和可靠性</p>
-            </div>
-
-            <div class="commit-item">
-                <h4>🔗 内容共享增强</h4>
-                <p><strong>提交：</strong> <span class="commit-hash">2bf89bd8</span> by <span class="commit-author">Tove Petersson</span></p>
-                <p><strong>焦点：</strong> 将use-sc-content-sharing-picker到期时间延长到m150</p>
-                <p><strong>影响：</strong> 扩展功能标志生命周期管理</p>
-            </div>
-
-            <h3>技术改进</h3>
+            <h3 class="lang-content" data-lang="en">Major Fixes and Improvements</h3>
+            <h3 class="lang-content" data-lang="zh" style="display: none;">主要修复和改进</h3>
             
             <div class="commit-item">
-                <h4>⚡ 字符串操作优化</h4>
-                <p><strong>提交：</strong> <span class="commit-hash">084279cb</span> by <span class="commit-author">Kent Tamura</span></p>
-                <p><strong>焦点：</strong> 将字符串operator+实现切换到"blink"命名空间</p>
-                <p><strong>影响：</strong> 代码组织和命名空间清理</p>
+                <h4 class="lang-content" data-lang="en">🔊 Audio System Enhancement</h4>
+                <h4 class="lang-content" data-lang="zh" style="display: none;">🔊 音频系统增强</h4>
+                <p><strong class="lang-content" data-lang="en">Commit:</strong><strong class="lang-content" data-lang="zh" style="display: none;">提交：</strong> <span class="commit-hash">bf46b049</span> by <span class="commit-author">Olga Sharonova</span></p>
+                <p><strong class="lang-content" data-lang="en">Focus:</strong><strong class="lang-content" data-lang="zh" style="display: none;">焦点：</strong> <span class="lang-content" data-lang="en">Fix ProcessedLocalAudioSource VerifyAudioFlow test</span><span class="lang-content" data-lang="zh" style="display: none;">修复ProcessedLocalAudioSource的VerifyAudioFlow测试</span></p>
+                <p><strong class="lang-content" data-lang="en">Impact:</strong><strong class="lang-content" data-lang="zh" style="display: none;">影响：</strong> <span class="lang-content" data-lang="en">Improved audio processing test reliability</span><span class="lang-content" data-lang="zh" style="display: none;">改进音频处理测试可靠性</span></p>
             </div>
 
             <div class="commit-item">
-                <h4>🌐 网络错误处理</h4>
-                <p><strong>提交：</strong> <span class="commit-hash">9be28b28</span> by <span class="commit-author">Mingyu Lei</span></p>
-                <p><strong>焦点：</strong> 更新网络错误代码枚举</p>
-                <p><strong>影响：</strong> 增强网络错误分类</p>
+                <h4 class="lang-content" data-lang="en">📱 iOS Platform Development</h4>
+                <h4 class="lang-content" data-lang="zh" style="display: none;">📱 iOS平台开发</h4>
+                <p><strong class="lang-content" data-lang="en">Commit:</strong><strong class="lang-content" data-lang="zh" style="display: none;">提交：</strong> <span class="commit-hash">2366b847</span> by <span class="commit-author">Jood</span></p>
+                <p><strong class="lang-content" data-lang="en">Focus:</strong><strong class="lang-content" data-lang="zh" style="display: none;">焦点：</strong> <span class="lang-content" data-lang="en">Refactor AccountProfileMapper AssignIdentityToProfile</span><span class="lang-content" data-lang="zh" style="display: none;">重构AccountProfileMapper AssignIdentityToProfile</span></p>
+                <p><strong class="lang-content" data-lang="en">Impact:</strong><strong class="lang-content" data-lang="zh" style="display: none;">影响：</strong> <span class="lang-content" data-lang="en">Enhanced iOS account management architecture</span><span class="lang-content" data-lang="zh" style="display: none;">增强iOS账户管理架构</span></p>
+            </div>
+
+            <div class="commit-item">
+                <h4 class="lang-content" data-lang="en">🧭 Navigation System Update</h4>
+                <h4 class="lang-content" data-lang="zh" style="display: none;">🧭 导航系统更新</h4>
+                <p><strong class="lang-content" data-lang="en">Commit:</strong><strong class="lang-content" data-lang="zh" style="display: none;">提交：</strong> <span class="commit-hash">a093af3f</span> by <span class="commit-author">Rune Lillesveen</span></p>
+                <p><strong class="lang-content" data-lang="en">Focus:</strong><strong class="lang-content" data-lang="zh" style="display: none;">焦点：</strong> <span class="lang-content" data-lang="en">Mark soft navigation tests as flaky</span><span class="lang-content" data-lang="zh" style="display: none;">将软导航测试标记为不稳定</span></p>
+                <p><strong class="lang-content" data-lang="en">Impact:</strong><strong class="lang-content" data-lang="zh" style="display: none;">影响：</strong> <span class="lang-content" data-lang="en">Improved test stability and reliability</span><span class="lang-content" data-lang="zh" style="display: none;">改进测试稳定性和可靠性</span></p>
+            </div>
+
+            <div class="commit-item">
+                <h4 class="lang-content" data-lang="en">🔗 Content Sharing Enhancement</h4>
+                <h4 class="lang-content" data-lang="zh" style="display: none;">🔗 内容共享增强</h4>
+                <p><strong class="lang-content" data-lang="en">Commit:</strong><strong class="lang-content" data-lang="zh" style="display: none;">提交：</strong> <span class="commit-hash">2bf89bd8</span> by <span class="commit-author">Tove Petersson</span></p>
+                <p><strong class="lang-content" data-lang="en">Focus:</strong><strong class="lang-content" data-lang="zh" style="display: none;">焦点：</strong> <span class="lang-content" data-lang="en">Extend expiry for use-sc-content-sharing-picker to m150</span><span class="lang-content" data-lang="zh" style="display: none;">将use-sc-content-sharing-picker到期时间延长到m150</span></p>
+                <p><strong class="lang-content" data-lang="en">Impact:</strong><strong class="lang-content" data-lang="zh" style="display: none;">影响：</strong> <span class="lang-content" data-lang="en">Extended feature flag lifecycle management</span><span class="lang-content" data-lang="zh" style="display: none;">扩展功能标志生命周期管理</span></p>
+            </div>
+
+            <h3 class="lang-content" data-lang="en">Technical Improvements</h3>
+            <h3 class="lang-content" data-lang="zh" style="display: none;">技术改进</h3>
+            
+            <div class="commit-item">
+                <h4 class="lang-content" data-lang="en">⚡ String Operation Optimization</h4>
+                <h4 class="lang-content" data-lang="zh" style="display: none;">⚡ 字符串操作优化</h4>
+                <p><strong class="lang-content" data-lang="en">Commit:</strong><strong class="lang-content" data-lang="zh" style="display: none;">提交：</strong> <span class="commit-hash">084279cb</span> by <span class="commit-author">Kent Tamura</span></p>
+                <p><strong class="lang-content" data-lang="en">Focus:</strong><strong class="lang-content" data-lang="zh" style="display: none;">焦点：</strong> <span class="lang-content" data-lang="en">Switch string operator+ implementations to "blink" namespace</span><span class="lang-content" data-lang="zh" style="display: none;">将字符串operator+实现切换到"blink"命名空间</span></p>
+                <p><strong class="lang-content" data-lang="en">Impact:</strong><strong class="lang-content" data-lang="zh" style="display: none;">影响：</strong> <span class="lang-content" data-lang="en">Code organization and namespace cleanup</span><span class="lang-content" data-lang="zh" style="display: none;">代码组织和命名空间清理</span></p>
+            </div>
+
+            <div class="commit-item">
+                <h4 class="lang-content" data-lang="en">🌐 Network Error Handling</h4>
+                <h4 class="lang-content" data-lang="zh" style="display: none;">🌐 网络错误处理</h4>
+                <p><strong class="lang-content" data-lang="en">Commit:</strong><strong class="lang-content" data-lang="zh" style="display: none;">提交：</strong> <span class="commit-hash">9be28b28</span> by <span class="commit-author">Mingyu Lei</span></p>
+                <p><strong class="lang-content" data-lang="en">Focus:</strong><strong class="lang-content" data-lang="zh" style="display: none;">焦点：</strong> <span class="lang-content" data-lang="en">Update net error codes enums</span><span class="lang-content" data-lang="zh" style="display: none;">更新网络错误代码枚举</span></p>
+                <p><strong class="lang-content" data-lang="en">Impact:</strong><strong class="lang-content" data-lang="zh" style="display: none;">影响：</strong> <span class="lang-content" data-lang="en">Enhanced network error classification</span><span class="lang-content" data-lang="zh" style="display: none;">增强网络错误分类</span></p>
             </div>
         </div>
 
         <!-- Development Trends -->
         <div class="section" id="trends">
-            <h2 class="section-title">📈 发展趋势</h2>
+            <h2 class="section-title">
+                <span class="lang-content" data-lang="en">📈 Development Trends</span>
+                <span class="lang-content" data-lang="zh" style="display: none;">📈 发展趋势</span>
+            </h2>
             
             <div class="insight-box">
-                <h3>🔍 质量保证焦点</h3>
-                <p>本周多个提交专注于测试改进和稳定性：</p>
+                <h3 class="lang-content" data-lang="en">🔍 Quality Assurance Focus</h3>
+                <h3 class="lang-content" data-lang="zh" style="display: none;">🔍 质量保证焦点</h3>
+                <p class="lang-content" data-lang="en">This week multiple commits focused on testing improvements and stability:</p>
+                <p class="lang-content" data-lang="zh" style="display: none;">本周多个提交专注于测试改进和稳定性：</p>
                 <ul style="margin-top: 10px;">
-                    <li>音频流测试修复</li>
-                    <li>软导航测试标记为不稳定</li>
-                    <li>iOS阅读列表测试修复</li>
+                    <li class="lang-content" data-lang="en">Audio stream test fixes</li>
+                    <li class="lang-content" data-lang="zh" style="display: none;">音频流测试修复</li>
+                    <li class="lang-content" data-lang="en">Soft navigation tests marked as flaky</li>
+                    <li class="lang-content" data-lang="zh" style="display: none;">软导航测试标记为不稳定</li>
+                    <li class="lang-content" data-lang="en">iOS reading list test fixes</li>
+                    <li class="lang-content" data-lang="zh" style="display: none;">iOS阅读列表测试修复</li>
                 </ul>
             </div>
 
             <div class="insight-box">
-                <h3>🌍 平台特定开发</h3>
-                <p>强调跨平台兼容性：</p>
+                <h3 class="lang-content" data-lang="en">🌍 Platform-Specific Development</h3>
+                <h3 class="lang-content" data-lang="zh" style="display: none;">🌍 平台特定开发</h3>
+                <p class="lang-content" data-lang="en">Emphasis on cross-platform compatibility:</p>
+                <p class="lang-content" data-lang="zh" style="display: none;">强调跨平台兼容性：</p>
                 <ul style="margin-top: 10px;">
-                    <li>iOS账户管理重构</li>
-                    <li>Chrome OS (ash) 改进</li>
-                    <li>平台特定构建增强</li>
+                    <li class="lang-content" data-lang="en">iOS account management refactoring</li>
+                    <li class="lang-content" data-lang="zh" style="display: none;">iOS账户管理重构</li>
+                    <li class="lang-content" data-lang="en">Chrome OS (ash) improvements</li>
+                    <li class="lang-content" data-lang="zh" style="display: none;">Chrome OS (ash) 改进</li>
+                    <li class="lang-content" data-lang="en">Platform-specific build enhancements</li>
+                    <li class="lang-content" data-lang="zh" style="display: none;">平台特定构建增强</li>
                 </ul>
             </div>
 
             <div class="insight-box">
-                <h3>🔗 依赖管理</h3>
-                <p>外部依赖的积极维护：</p>
+                <h3 class="lang-content" data-lang="en">🔗 Dependency Management</h3>
+                <h3 class="lang-content" data-lang="zh" style="display: none;">🔗 依赖管理</h3>
+                <p class="lang-content" data-lang="en">Active maintenance of external dependencies:</p>
+                <p class="lang-content" data-lang="zh" style="display: none;">外部依赖的积极维护：</p>
                 <ul style="margin-top: 10px;">
-                    <li>Projector App更新</li>
-                    <li>Chrome Win ARM64 PGO Profile rolls</li>
-                    <li>第三方库更新</li>
+                    <li class="lang-content" data-lang="en">Projector App updates</li>
+                    <li class="lang-content" data-lang="zh" style="display: none;">Projector App更新</li>
+                    <li class="lang-content" data-lang="en">Chrome Win ARM64 PGO Profile rolls</li>
+                    <li class="lang-content" data-lang="zh" style="display: none;">Chrome Win ARM64 PGO Profile rolls</li>
+                    <li class="lang-content" data-lang="en">Third-party library updates</li>
+                    <li class="lang-content" data-lang="zh" style="display: none;">第三方库更新</li>
                 </ul>
             </div>
         </div>
 
         <!-- Risk Assessment -->
         <div class="section" id="risks">
-            <h2 class="section-title">⚠️ 风险评估</h2>
+            <h2 class="section-title">
+                <span class="lang-content" data-lang="en">⚠️ Risk Assessment</span>
+                <span class="lang-content" data-lang="zh" style="display: none;">⚠️ 风险评估</span>
+            </h2>
             
             <div class="risk-warning">
-                <h3>🧪 测试稳定性担忧</h3>
-                <p>将软导航测试标记为不稳定表明导航组件中可能存在需要监控的稳定性问题。</p>
+                <h3 class="lang-content" data-lang="en">🧪 Test Stability Concerns</h3>
+                <h3 class="lang-content" data-lang="zh" style="display: none;">🧪 测试稳定性担忧</h3>
+                <p class="lang-content" data-lang="en">Marking soft navigation tests as flaky indicates potential stability issues in navigation components that require monitoring.</p>
+                <p class="lang-content" data-lang="zh" style="display: none;">将软导航测试标记为不稳定表明导航组件中可能存在需要监控的稳定性问题。</p>
             </div>
 
             <div class="risk-warning">
-                <h3>📱 平台碎片化</h3>
-                <p>大量iOS特定变更表明需要关注的持续平台特定挑战。</p>
+                <h3 class="lang-content" data-lang="en">📱 Platform Fragmentation</h3>
+                <h3 class="lang-content" data-lang="zh" style="display: none;">📱 平台碎片化</h3>
+                <p class="lang-content" data-lang="en">Significant iOS-specific changes indicate ongoing platform-specific challenges that require attention.</p>
+                <p class="lang-content" data-lang="zh" style="display: none;">大量iOS特定变更表明需要关注的持续平台特定挑战。</p>
             </div>
 
             <div class="risk-warning">
-                <h3>🔗 依赖复杂性</h3>
-                <p>大量依赖更新（13个自动化提交）表明复杂的外部依赖管理。</p>
+                <h3 class="lang-content" data-lang="en">🔗 Dependency Complexity</h3>
+                <h3 class="lang-content" data-lang="zh" style="display: none;">🔗 依赖复杂性</h3>
+                <p class="lang-content" data-lang="en">High volume of dependency updates (13 automated commits) indicates complex external dependency management.</p>
+                <p class="lang-content" data-lang="zh" style="display: none;">大量依赖更新（13个自动化提交）表明复杂的外部依赖管理。</p>
             </div>
         </div>
 
         <!-- Recommendations -->
         <div class="section" id="recommendations">
-            <h2 class="section-title">💡 建议</h2>
+            <h2 class="section-title">
+                <span class="lang-content" data-lang="en">💡 Recommendations</span>
+                <span class="lang-content" data-lang="zh" style="display: none;">💡 建议</span>
+            </h2>
             
             <div class="recommendations">
                 <div class="recommendation-card">
-                    <h4>🚀 短期行动</h4>
+                    <h4 class="lang-content" data-lang="en">🚀 Short-term Actions</h4>
+                    <h4 class="lang-content" data-lang="zh" style="display: none;">🚀 短期行动</h4>
                     <ul>
-                        <li><strong>监控导航测试：</strong> 跟进不稳定的软导航测试以确保稳定性</li>
-                        <li><strong>审查iOS变更：</strong> 验证iOS账户管理重构的影响</li>
-                        <li><strong>依赖审计：</strong> 审查大量依赖更新的安全影响</li>
+                        <li><strong class="lang-content" data-lang="en">Monitor Navigation Tests:</strong> <span class="lang-content" data-lang="en">Follow up on flaky soft navigation tests to ensure stability</span></li>
+                        <li class="lang-content" data-lang="zh" style="display: none;"><strong>监控导航测试：</strong> 跟进不稳定的软导航测试以确保稳定性</li>
+                        <li><strong class="lang-content" data-lang="en">Review iOS Changes:</strong> <span class="lang-content" data-lang="en">Validate the impact of iOS account management refactoring</span></li>
+                        <li class="lang-content" data-lang="zh" style="display: none;"><strong>审查iOS变更：</strong> 验证iOS账户管理重构的影响</li>
+                        <li><strong class="lang-content" data-lang="en">Dependency Audit:</strong> <span class="lang-content" data-lang="en">Review security implications of high-volume dependency updates</span></li>
+                        <li class="lang-content" data-lang="zh" style="display: none;"><strong>依赖审计：</strong> 审查大量依赖更新的安全影响</li>
                     </ul>
                 </div>
 
                 <div class="recommendation-card">
-                    <h4>🎯 长期考虑</h4>
+                    <h4 class="lang-content" data-lang="en">🎯 Long-term Considerations</h4>
+                    <h4 class="lang-content" data-lang="zh" style="display: none;">🎯 长期考虑</h4>
                     <ul>
-                        <li><strong>测试基础设施：</strong> 投资更强大的测试基础设施以减少不稳定性</li>
-                        <li><strong>平台策略：</strong> 制定更清晰的跨平台开发指南</li>
-                        <li><strong>自动化增强：</strong> 改进依赖更新的自动化测试</li>
+                        <li><strong class="lang-content" data-lang="en">Test Infrastructure:</strong> <span class="lang-content" data-lang="en">Invest in more robust testing infrastructure to reduce flakiness</span></li>
+                        <li class="lang-content" data-lang="zh" style="display: none;"><strong>测试基础设施：</strong> 投资更强大的测试基础设施以减少不稳定性</li>
+                        <li><strong class="lang-content" data-lang="en">Platform Strategy:</strong> <span class="lang-content" data-lang="en">Develop clearer cross-platform development guidelines</span></li>
+                        <li class="lang-content" data-lang="zh" style="display: none;"><strong>平台策略：</strong> 制定更清晰的跨平台开发指南</li>
+                        <li><strong class="lang-content" data-lang="en">Automation Enhancement:</strong> <span class="lang-content" data-lang="en">Improve automated testing for dependency updates</span></li>
+                        <li class="lang-content" data-lang="zh" style="display: none;"><strong>自动化增强：</strong> 改进依赖更新的自动化测试</li>
                     </ul>
                 </div>
             </div>
@@ -808,7 +1050,10 @@
 
         <!-- Recent Commits List -->
         <div class="section">
-            <h2 class="section-title">📝 完整的最近提交列表</h2>
+            <h2 class="section-title">
+                <span class="lang-content" data-lang="en">📝 Complete Recent Commits List</span>
+                <span class="lang-content" data-lang="zh" style="display: none;">📝 完整的最近提交列表</span>
+            </h2>
             <div style="display: grid; gap: 10px;">
                 <div class="commit-item" style="font-size: 0.9rem;">
                     <span class="commit-hash">bf46b049</span> - <span class="commit-author">Olga Sharonova</span> - Fix VerifyAudioFlow test for ProcessedLocalAudioSource
@@ -845,34 +1090,109 @@
 
         <!-- Analysis Methodology -->
         <div class="section">
-            <h2 class="section-title">📊 分析方法论</h2>
+            <h2 class="section-title">
+                <span class="lang-content" data-lang="en">📊 Analysis Methodology</span>
+                <span class="lang-content" data-lang="zh" style="display: none;">📊 分析方法论</span>
+            </h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
                 <div style="background: rgba(0, 122, 255, 0.1); padding: 15px; border-radius: 12px; border-left: 4px solid #007AFF;">
-                    <h4 style="margin-bottom: 10px;">数据源</h4>
-                    <p>本地chromium仓库，main分支</p>
+                    <h4 style="margin-bottom: 10px;" class="lang-content" data-lang="en">Data Source</h4>
+                    <h4 style="margin-bottom: 10px;" class="lang-content" data-lang="zh" style="display: none;">数据源</h4>
+                    <p class="lang-content" data-lang="en">Local chromium repository, main branch</p>
+                    <p class="lang-content" data-lang="zh" style="display: none;">本地chromium仓库，main分支</p>
                 </div>
                 <div style="background: rgba(0, 122, 255, 0.1); padding: 15px; border-radius: 12px; border-left: 4px solid #007AFF;">
-                    <h4 style="margin-bottom: 10px;">时间周期</h4>
-                    <p>7天滚动窗口（2025年6月20-27日）</p>
+                    <h4 style="margin-bottom: 10px;" class="lang-content" data-lang="en">Time Period</h4>
+                    <h4 style="margin-bottom: 10px;" class="lang-content" data-lang="zh" style="display: none;">时间周期</h4>
+                    <p class="lang-content" data-lang="en">7-day rolling window (June 20-27, 2025)</p>
+                    <p class="lang-content" data-lang="zh" style="display: none;">7天滚动窗口（2025年6月20-27日）</p>
                 </div>
                 <div style="background: rgba(0, 122, 255, 0.1); padding: 15px; border-radius: 12px; border-left: 4px solid #007AFF;">
-                    <h4 style="margin-bottom: 10px;">提交限制</h4>
-                    <p>分析了500次提交</p>
+                    <h4 style="margin-bottom: 10px;" class="lang-content" data-lang="en">Commit Limit</h4>
+                    <h4 style="margin-bottom: 10px;" class="lang-content" data-lang="zh" style="display: none;">提交限制</h4>
+                    <p class="lang-content" data-lang="en">Analyzed 500 commits</p>
+                    <p class="lang-content" data-lang="zh" style="display: none;">分析了500次提交</p>
                 </div>
                 <div style="background: rgba(0, 122, 255, 0.1); padding: 15px; border-radius: 12px; border-left: 4px solid #007AFF;">
-                    <h4 style="margin-bottom: 10px;">分析工具</h4>
-                    <p>Chromium Code Master MCP服务器</p>
+                    <h4 style="margin-bottom: 10px;" class="lang-content" data-lang="en">Analysis Tools</h4>
+                    <h4 style="margin-bottom: 10px;" class="lang-content" data-lang="zh" style="display: none;">分析工具</h4>
+                    <p class="lang-content" data-lang="en">Chromium Code Master MCP Server</p>
+                    <p class="lang-content" data-lang="zh" style="display: none;">Chromium Code Master MCP服务器</p>
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            <p><em>由Chromium Code Master跟踪系统生成的报告</em></p>
-            <p><em>如有疑问或需要额外分析，请参考跟踪系统文档</em></p>
+            <p><em class="lang-content" data-lang="en">Report generated by Chromium Code Master tracking system</em></p>
+            <p><em class="lang-content" data-lang="zh" style="display: none;">由Chromium Code Master跟踪系统生成的报告</em></p>
+            <p><em class="lang-content" data-lang="en">For questions or additional analysis, please refer to the tracking system documentation</em></p>
+            <p><em class="lang-content" data-lang="zh" style="display: none;">如有疑问或需要额外分析，请参考跟踪系统文档</em></p>
         </div>
     </div>
 
     <script>
+        // Language switching functionality
+        function switchLanguage(lang) {
+            // Hide all language content
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Show content for selected language
+            document.querySelectorAll(`.lang-content[data-lang="${lang}"]`).forEach(el => {
+                el.style.display = 'inline';
+            });
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+            
+            // Update navigation text based on language
+            const navItems = document.querySelectorAll('.nav-item');
+            const navTexts = {
+                'en': ['Overview', 'Activity', 'Contributors', 'Components', 'Commits', 'Trends', 'Risks', 'Recommendations'],
+                'zh': ['概览', '开发活动', '贡献者', '组件分析', '重要提交', '发展趋势', '风险评估', '建议']
+            };
+            
+            navItems.forEach((item, index) => {
+                if (navTexts[lang] && navTexts[lang][index]) {
+                    item.textContent = navTexts[lang][index];
+                }
+            });
+            
+            // Update meta description based on language
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) {
+                metaDescription.content = lang === 'en' 
+                    ? 'Chromium Weekly Changes Report - In-depth analysis of Chromium development activities and code change trends'
+                    : 'Chromium Weekly Changes Report - 深度分析Chromium开发活动和代码变更趋势';
+            }
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang === 'en' ? 'en-US' : 'zh-CN';
+            
+            // Update back to top button title
+            const backToTopBtn = document.getElementById('backToTop');
+            if (backToTopBtn) {
+                backToTopBtn.title = lang === 'en' ? 'Back to Top' : '返回顶部';
+            }
+        }
+
+        // Initialize language switcher
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                switchLanguage(lang);
+            });
+        });
+
+        // Initialize with English as default
+        document.addEventListener('DOMContentLoaded', () => {
+            switchLanguage('en');
+        });
+
         // Scroll progress indicator
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset;
