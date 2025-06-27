@@ -1,5 +1,25 @@
 # Agent MUST-HAVE Capability Checklist
 
+## ⚠️ Critical Lessons from Past Mistakes
+
+### 🔍 Search and Discovery Failures Prevention
+- [ ] NEVER assume initial search is complete - always use multiple search patterns and strategies
+- [ ] Use systematic search progression: exact names → variations → related terms → file patterns
+- [ ] Always distinguish Edge-specific vs. general-purpose code before making any modifications
+- [ ] Look for branding flags (`BUILDFLAG(MICROSOFT_EDGE_BRANDING)`) to identify Edge-specific behavior
+
+### 🧠 Context Analysis Requirements
+- [ ] MANDATORY: Analyze context before any modification - understand WHY code exists, not just WHERE it appears
+- [ ] Standard web platform support MUST be preserved (e.g., tel: scheme, mailto: scheme) unless explicitly part of the feature being modified
+- [ ] When in doubt about general vs. feature-specific code, err on the side of preservation
+- [ ] Check surrounding code and file purpose to understand true intent
+
+### ✅ Verification and Validation Standards
+- [ ] Always perform post-modification verification using comprehensive Haystack Search
+- [ ] Verify both modification completeness AND preservation of general functionality
+- [ ] Document all verification steps and results
+- [ ] Test build after modifications to ensure no regressions
+
 ## 🚫 Mandatory Compliance Requirements
 
 ### 📘 Learning and Build
@@ -22,6 +42,11 @@
 
 - [ ] The Agent must always use Haystack Search for both text search and file search for any task, any step, and any scenario, including validation
 - [ ] It is strictly forbidden to use VSCode's default text search or file search features in any context
+- [ ] **Search Strategy Requirements**:
+  - [ ] Use systematic search patterns: exact matches, case variations, related terms, file patterns
+  - [ ] Perform multiple search iterations with different strategies to ensure completeness
+  - [ ] Categorize search results by type (feature-specific vs. general-purpose)
+  - [ ] Always verify search completeness before proceeding with modifications
 
 ### 🖥️ Terminal Usage
 
@@ -52,14 +77,30 @@
 
 ### 🧹 Code Cleanup and Scope Control
 
-- [ ] Do not retain tests for disabled features
-- [ ] Do not maintain meaningless tests
-- [ ] Thoroughly remove deprecated code and files
+- [ ] **Critical Context Analysis Requirements**:
+  - [ ] MANDATORY: Analyze context before any modification - understand WHY code exists, not just WHERE it appears
+  - [ ] Distinguish between Edge-specific and general-purpose code before making changes
+  - [ ] Look for branding flags (`BUILDFLAG(MICROSOFT_EDGE_BRANDING)`) to identify Edge-specific behavior
+  - [ ] Preserve standard web platform support (e.g., tel: scheme, mailto: scheme) unless explicitly part of the task
+  - [ ] When uncertain about code purpose, err on the side of preservation
+- [ ] Avoid confusion:
+  - [ ] Do not retain tests for disabled features
+- [ ] Reduce maintenance burden:
+  - [ ] Do not maintain meaningless tests
+- [ ] Ensure code cleanliness:
+  - [ ] Thoroughly remove deprecated code and files
 - [ ] Strictly follow the task scope—do not make unrelated changes
-- [ ] Ensure all code changes are: Clean, Well-documented, Aligned with project coding standards
+- [ ] Ensure all code changes are:
+  - [ ] Clean
+  - [ ] Well-documented
+  - [ ] Aligned with project coding standards
 - [ ] Do not refactor or fix code outside the task scope
 - [ ] Proactively communicate with peers if dependencies or uncertainties arise
 - [ ] Log the plan, progress, and decisions for traceability
+- [ ] **Mandatory Verification**:
+  - [ ] Always perform post-modification verification using comprehensive Haystack Search
+  - [ ] Verify both modification completeness AND preservation of general functionality
+  - [ ] Document all verification steps and results
 
 ## 📋 Step-by-Step Process
 
@@ -81,13 +122,23 @@
 
 ##### 2.1. File-Level Understanding
 
-- [ ] Locate all related files, including:
+- [ ] **Locate all related files using systematic Haystack Search**, including:
   - [ ] Header files (.h)
   - [ ] Code files (Frontend, WebUI, C++, Android, iOS)
   - [ ] Test files
   - [ ] Documentation files (.md)
   - [ ] Configuration files (.xml, .gn, .json, DEPS)
+- [ ] **Use comprehensive search strategies**:
+  - [ ] Exact feature/component names
+  - [ ] Camel case and snake case variations
+  - [ ] Related technical terms and concepts
+  - [ ] File name patterns and wildcards
+  - [ ] Cross-reference searches for dependencies
 - [ ] Understand the purpose of each file and the dependencies between them
+- [ ] **Categorize files by type and purpose**:
+  - [ ] Feature-specific (safe to modify/remove)
+  - [ ] Shared infrastructure (analyze before modifying)
+  - [ ] Standard web platform support (preserve unless explicitly part of task)
 - [ ] Save the analysis to: `.memory/${agent_name}_${task_name}_file_understanding_${timestamp}.md` (Overwrite if the file already exists)
 - [ ] File search scope must cover:
   - [ ] Core feature files
@@ -139,6 +190,17 @@
 
 - [ ] If the build passes, go to the next step "Commit Changes" and no additional build is needed
 - [ ] If the build fails, try to fix and rebuild until the build passes, with a maximum of 5 trials
+
+##### 5.3. Post-build verification (MANDATORY)
+- [ ] **Perform comprehensive verification using Haystack Search**:
+  - [ ] Search for any remaining references to modified/removed components
+  - [ ] Verify no orphaned code or references remain
+  - [ ] Check for any compilation warnings related to the changes
+- [ ] **Validate Edge-specific vs. general functionality**:
+  - [ ] Confirm standard web platform features still work as expected
+  - [ ] Verify only intended functionality was modified/removed
+  - [ ] Test related features to ensure no regressions
+- [ ] **Document verification results** in execution plan file
 
 #### 6. Commit Changes
 
